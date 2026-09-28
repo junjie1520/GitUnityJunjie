@@ -210,6 +210,7 @@ GameObject:
   - component: {fileID: 362016265}
   - component: {fileID: 362016266}
   - component: {fileID: 362016267}
+  - component: {fileID: 362016268}
   m_Layer: 6
   m_Name: Palo
   m_TagString: set1
@@ -411,6 +412,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &362016268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362016262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83146c1bbab35084fa4245a3df5ea593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaloManager
 --- !u!1 &365881219
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,6 +437,7 @@ GameObject:
   - component: {fileID: 365881220}
   - component: {fileID: 365881223}
   - component: {fileID: 365881224}
+  - component: {fileID: 365881225}
   m_Layer: 6
   m_Name: Palo (5)
   m_TagString: set3
@@ -624,6 +638,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &365881225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365881219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83146c1bbab35084fa4245a3df5ea593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaloManager
 --- !u!1 &409196842
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,6 +663,8 @@ GameObject:
   - component: {fileID: 409196845}
   - component: {fileID: 409196846}
   - component: {fileID: 409196847}
+  - component: {fileID: 409196848}
+  - component: {fileID: 409196849}
   m_Layer: 6
   m_Name: Palo (1)
   m_TagString: set1
@@ -837,6 +865,30 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &409196848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409196842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83146c1bbab35084fa4245a3df5ea593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+--- !u!114 &409196849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409196842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83146c1bbab35084fa4245a3df5ea593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaloManager
 --- !u!1 &460171022
 GameObject:
   m_ObjectHideFlags: 0
@@ -849,6 +901,7 @@ GameObject:
   - component: {fileID: 460171023}
   - component: {fileID: 460171025}
   - component: {fileID: 460171026}
+  - component: {fileID: 460171027}
   m_Layer: 6
   m_Name: Palo (2)
   m_TagString: set2
@@ -1004,6 +1057,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &460171027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 460171022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83146c1bbab35084fa4245a3df5ea593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaloManager
 --- !u!1 &479905100
 GameObject:
   m_ObjectHideFlags: 0
@@ -1367,6 +1432,7 @@ GameObject:
   - component: {fileID: 547872133}
   - component: {fileID: 547872135}
   - component: {fileID: 547872134}
+  - component: {fileID: 547872136}
   m_Layer: 5
   m_Name: UI Puntos
   m_TagString: Untagged
@@ -1493,6 +1559,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 547872132}
   m_CullTransparentMesh: 1
+--- !u!114 &547872136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547872132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69e72491be14fc64a8799611922855b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  _puntuacionManager: {fileID: 1652630720}
 --- !u!1 &603549348
 GameObject:
   m_ObjectHideFlags: 0
@@ -1506,6 +1585,7 @@ GameObject:
   - component: {fileID: 603549349}
   - component: {fileID: 603549352}
   - component: {fileID: 603549353}
+  - component: {fileID: 603549354}
   m_Layer: 6
   m_Name: Palo (3)
   m_TagString: set2
@@ -1706,6 +1786,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &603549354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603549348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83146c1bbab35084fa4245a3df5ea593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaloManager
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -2140,9 +2232,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e73675464db20d4488aad7a355ec9947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BirleBehaviour
-  _buttonRef: {fileID: -2099379676528639254, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  _texto: {fileID: 547872134}
+  _spaceRed: {fileID: -2099379676528639254, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  _clickRef: {fileID: 3001919216989983466, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   _instruccion: {fileID: 479905102}
+  _paloManager: {fileID: 1393648280}
 --- !u!70 &928226222
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2410,6 +2503,59 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1393648279
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1393648281}
+  - component: {fileID: 1393648280}
+  m_Layer: 0
+  m_Name: PaloController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1393648280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393648279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 677cc01745805b14eac0ab01d876858c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PalosController
+  _palos:
+  - {fileID: 362016268}
+  - {fileID: 409196848}
+  - {fileID: 460171027}
+  - {fileID: 603549354}
+  - {fileID: 2038281571}
+  - {fileID: 365881225}
+  - {fileID: 1584708623}
+  - {fileID: 2135624876}
+--- !u!4 &1393648281
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393648279}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.66259, y: 1.28416, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1461621942
 GameObject:
   m_ObjectHideFlags: 0
@@ -2501,6 +2647,7 @@ GameObject:
   - component: {fileID: 1584708618}
   - component: {fileID: 1584708621}
   - component: {fileID: 1584708622}
+  - component: {fileID: 1584708623}
   m_Layer: 6
   m_Name: Palo (6)
   m_TagString: set4
@@ -2702,6 +2849,64 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1584708623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584708617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83146c1bbab35084fa4245a3df5ea593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaloManager
+--- !u!1 &1652630719
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1652630721}
+  - component: {fileID: 1652630720}
+  m_Layer: 0
+  m_Name: PuntuacionManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1652630720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652630719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36ed16962b551554aac4d3c2cdc6d54d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuntuacionManager
+  _birle: {fileID: 928226221}
+  _paloManager: {fileID: 1393648280}
+--- !u!4 &1652630721
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652630719}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.66259, y: 1.28416, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1836326051
 GameObject:
   m_ObjectHideFlags: 0
@@ -2897,6 +3102,7 @@ GameObject:
   - component: {fileID: 2038281566}
   - component: {fileID: 2038281569}
   - component: {fileID: 2038281570}
+  - component: {fileID: 2038281571}
   m_Layer: 6
   m_Name: Palo (4)
   m_TagString: set3
@@ -3098,6 +3304,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2038281571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038281565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83146c1bbab35084fa4245a3df5ea593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaloManager
 --- !u!1 &2135624870
 GameObject:
   m_ObjectHideFlags: 0
@@ -3111,6 +3329,7 @@ GameObject:
   - component: {fileID: 2135624871}
   - component: {fileID: 2135624874}
   - component: {fileID: 2135624875}
+  - component: {fileID: 2135624876}
   m_Layer: 6
   m_Name: Palo (7)
   m_TagString: set4
@@ -3311,6 +3530,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2135624876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135624870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83146c1bbab35084fa4245a3df5ea593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaloManager
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -3331,3 +3562,5 @@ SceneRoots:
   - {fileID: 1162286822}
   - {fileID: 2014483172}
   - {fileID: 779623581}
+  - {fileID: 1393648281}
+  - {fileID: 1652630721}

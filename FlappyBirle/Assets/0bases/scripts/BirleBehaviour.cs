@@ -7,23 +7,25 @@ using System;
 public class BirleBehaviour : MonoBehaviour
 {
     [SerializeField]
-        private InputActionReference _buttonRef;
-        
+    private InputActionReference _spaceRed;
     [SerializeField]
-        private TextMeshProUGUI _texto;
+    private InputActionReference _clickRef;
 
     [SerializeField]
-        private TextMeshProUGUI _instruccion;
+    private TextMeshProUGUI _instruccion;
     
+    [SerializeField]
+    private PalosController _paloManager;
+    
+    public event Action<int> OnBirleCollision;
     private Rigidbody2D _rigidBody2D;
     private float _velocidad;
     private bool _start = false;
-    private int _puntuacion = 80;
 
     private void Awake()
         {
             _rigidBody2D = GetComponent<Rigidbody2D>();
-            _buttonRef.action.performed += Jump;
+            _spaceRed.action.performed += Jump;
         }
 
     private void Jump(InputAction.CallbackContext context)
@@ -34,7 +36,7 @@ public class BirleBehaviour : MonoBehaviour
             _rigidBody2D.WakeUp();
             _rigidBody2D.AddForceY(5, ForceMode2D.Impulse); 
             _instruccion.text = "";
-            IniciarPalos(-2f);
+            _paloManager.IniciarPalos(-2f);
         }
         else
         {
@@ -58,8 +60,8 @@ public class BirleBehaviour : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         _rigidBody2D.Sleep();
-        _buttonRef.action.Disable();
-        PararPalos();
+        _spaceRed.action.Disable();
+        _paloManager.PararPalos();
     }   
 
     void OnTriggerExit2D(Collider2D collision)
@@ -68,52 +70,14 @@ public class BirleBehaviour : MonoBehaviour
         {
             if (collision.GetComponentInParent<SpriteRenderer>().color == Color.softRed)
             {
-                _puntuacion += 5;
+                OnBirleCollision?.Invoke(5);
             }
             else
             {
-                _puntuacion++;
-            }
-            _texto.text = "Puntos: " + _puntuacion;
-            if (_puntuacion >= 80)
-            {
-                IniciarPalos(-7f);
-            }else if (_puntuacion >= 40)
-            {
-                IniciarPalos(-5f);
-            }else if (_puntuacion >= 20)
-            {
-                IniciarPalos(-4f);
-            }else if (_puntuacion >= 10)
-            {
-                IniciarPalos(-3f);
+                OnBirleCollision?.Invoke(1);
             }
         }
     }
 
-    private void IniciarPalos(float _vel)
-    {
-        Rigidbody2D[] cuerpos = FindObjectsByType<Rigidbody2D>();
-
-        foreach (Rigidbody2D rb in cuerpos)
-        {
-            if (rb.tag.StartsWith("set"))
-            {
-                rb.linearVelocityX = _vel;
-            }
-        }
-    }
-
-    private void PararPalos()
-    {
-        Rigidbody2D[] cuerpos = FindObjectsByType<Rigidbody2D>();
-
-        foreach (Rigidbody2D rb in cuerpos)
-        {
-            if (rb.tag.StartsWith("set"))
-            {
-                rb.linearVelocityX = 0;
-            }
-        }
-    }
+    
 }
