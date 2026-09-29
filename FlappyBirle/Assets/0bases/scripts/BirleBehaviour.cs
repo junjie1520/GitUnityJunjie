@@ -3,13 +3,12 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 using System;
+using UnityEngine.SceneManagement;
 
 public class BirleBehaviour : MonoBehaviour
 {
     [SerializeField]
-    private InputActionReference _spaceRed;
-    [SerializeField]
-    private InputActionReference _clickRef;
+    private InputActionReference _spaceRef;
 
     [SerializeField]
     private TextMeshProUGUI _instruccion;
@@ -25,7 +24,7 @@ public class BirleBehaviour : MonoBehaviour
     private void Awake()
         {
             _rigidBody2D = GetComponent<Rigidbody2D>();
-            _spaceRed.action.performed += Jump;
+            _spaceRef.action.performed += Jump;
         }
 
     private void Jump(InputAction.CallbackContext context)
@@ -55,13 +54,21 @@ public class BirleBehaviour : MonoBehaviour
     private void Update()
         {
             _velocidad = _rigidBody2D.linearVelocityY;
+            if (Keyboard.current.rKey.wasPressedThisFrame)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                _start = false;
+                _spaceRef.action.Enable();
+            }
         }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         _rigidBody2D.Sleep();
-        _spaceRed.action.Disable();
+        _spaceRef.action.Disable();
         _paloManager.PararPalos();
+        _instruccion.text = "GGs (pulsa R para reiniciar)";
+
     }   
 
     void OnTriggerExit2D(Collider2D collision)
@@ -78,6 +85,4 @@ public class BirleBehaviour : MonoBehaviour
             }
         }
     }
-
-    
 }

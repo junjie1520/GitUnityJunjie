@@ -23,7 +23,7 @@ public class TPBehaviour : MonoBehaviour
             }
             else
             {
-                _palo.GetComponent<SpriteRenderer>().color = Color.white;
+                _palo.GetComponent<SpriteRenderer>().color = Color.blue;
                 _separacion = 8f;
             }
             Rigidbody2D _rbp = _palo.GetComponent<Rigidbody2D>();
