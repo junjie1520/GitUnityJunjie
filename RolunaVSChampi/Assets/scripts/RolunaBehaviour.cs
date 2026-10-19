@@ -82,9 +82,9 @@ public class RolunaBehaviour : MonoBehaviour
             }
         }else if (collision.gameObject.CompareTag("enemigo")){
             _vida--;
+            Debug.Log("Vidas: " + _vida);
             if (_vida <= 0)
             {
-                Debug.Log("Vidas: " + _vida);
                 muerte();
             }
         }
