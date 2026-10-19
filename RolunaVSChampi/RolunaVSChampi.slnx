@@ -1,7 +1,4 @@
 ﻿<Solution>
-<<<<<<< HEAD
   <Project Path="com.ben-w.erp.csproj" />
-=======
->>>>>>> 01d1943 (christian: Mapa + Objetos)
   <Project Path="Assembly-CSharp.csproj" />
 </Solution>
