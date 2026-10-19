@@ -4,9 +4,15 @@
 TagManager:
   serializedVersion: 3
   tags:
+<<<<<<< HEAD
   - Suelo
   - Plataforma
   - enemigo
+=======
+  - Invencible
+  - Speedboost
+  - Rambo
+>>>>>>> 01d1943 (christian: Mapa + Objetos)
   layers:
   - Default
   - TransparentFX
