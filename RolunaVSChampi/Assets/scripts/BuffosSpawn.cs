@@ -13,7 +13,7 @@ public class Buffos : MonoBehaviour
         {
             case 0:
                 powerup.tag = "Invisible";
-                powerup.sprite = 
+                //powerup.sprite = 
                 break;
 
             case 1:
