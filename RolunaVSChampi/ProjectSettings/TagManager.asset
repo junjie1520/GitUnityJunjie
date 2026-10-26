@@ -7,6 +7,10 @@ TagManager:
   - enemigo
   - Plataforma
   - Suelo
+  - Invencibilidad
+  - Nitro
+  - Invisibilidad
+  - Berserker
   layers:
   - Default
   - TransparentFX
