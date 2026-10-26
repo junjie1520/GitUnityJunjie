@@ -1,31 +1,17 @@
-using System;
 using System.Collections;
 using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Timeline;
 
 public class RolunaBehaviour : MonoBehaviour
 {
     [SerializeField]
     private InputActionReference _movimientoRef; 
    
-    [SerializeField]
-    private InputActionReference _dispararRef; 
-   
-    [SerializeField]
-    private float _salto = 10f;
 
     [SerializeField]
-    private GameObject _balaPrefab;
+    private float _salto = 6f;
 
-
-    [SerializeField]
-    private Transform _puntoDisparo;
-
-    private float _coldown = 0.20f;
-    private float _tiempoActual;
     private Rigidbody2D _rigidBody2D;
     private bool _puedeSaltar = true;
     private Vector2 _inputMovimiento;
@@ -34,113 +20,44 @@ public class RolunaBehaviour : MonoBehaviour
     private float _velocidad = 6f;
     private int _ataque = 1;
     private int _vida = 10;
-    private int _puntos = 0;
 
-    public string _direccion;
-
-    public int getAtaque()
-    {
-        return _ataque;
-    }
-
-    public int getVida()
-    {
-        return _vida;
-    }
-
-    public void setAtaque(int ataque)
-    {
-        this._ataque = ataque;
-    }
-    public void setVida(int vida)
-    {
-        this._vida = vida;
-    }
-
-    public int getPuntos()
-    {
-        return _puntos;
-    }
-
-    public void setPuntos(int puntos)
-    {
-        this._puntos = puntos;
-    }
 
     private void Awake()
     {
         _rigidBody2D = GetComponent<Rigidbody2D>();
-        _tiempoActual = 0;
     }
 
     private void OnEnable()
     {
         _movimientoRef.action.performed += Saltar;
-
-        _dispararRef.action.performed += Disparar;
+        _movimientoRef.action.performed += LeerMovimiento;
+        _movimientoRef.action.canceled += LeerMovimiento;
     }
 
     private void OnDisable()
     {   
         _movimientoRef.action.performed -= Saltar;
-
-        _dispararRef.action.performed += Disparar;
-
+        _movimientoRef.action.performed -= LeerMovimiento;
+        _movimientoRef.action.canceled -= LeerMovimiento;
     }
 
-    private void Disparar(InputAction.CallbackContext context)
+    private void LeerMovimiento(InputAction.CallbackContext context)
     {
-        if(_tiempoActual == 0)
-        {
-            Vector3 posicionSpawn = _puntoDisparo.position;
-            Vector3 direccio = transform.right;
-            /*
-            if (posicionSpawn.x < transform.position.x)
-            {
-                direccio = Vector3.left;
-            }
-            */
-            GameObject nuevaBala = Instantiate(_balaPrefab, posicionSpawn, Quaternion.identity);
-
-            nuevaBala.GetComponent<BalaBehaviour>().Disparar(direccio, 15);
-            _tiempoActual = _coldown;
-        }
-
-    }
-
-
-    private void Update()
-    {
-        _inputMovimiento = _movimientoRef.action.ReadValue<Vector2>();
-        if(_tiempoActual <= 0)
-        {
-            _tiempoActual = 0;
-        }
-        else
-        {
-            _tiempoActual-=Time.deltaTime;
-
-        }
+        _inputMovimiento = context.ReadValue<Vector2>();
         if (_inputMovimiento.y < -0.5f && _plataformaActual != null && !_isBajando)
         {
             StartCoroutine(DejarseCaer());
         }
+    }
 
-        if (_inputMovimiento.x < -0.5f)
-        {
-            _rigidBody2D.linearVelocityX = -_velocidad; 
-            transform.localEulerAngles = Vector3.up * 180;      
+    private void Update()
+    {
+        if (_inputMovimiento.x < -0.5f){
+            transform.Translate(Vector2.left * _velocidad * Time.deltaTime);
         }
         else if (_inputMovimiento.x > 0.5f){
-            _rigidBody2D.linearVelocityX = _velocidad;
-            transform.localEulerAngles = Vector3.zero;      
-
+            transform.Translate(Vector2.right * _velocidad * Time.deltaTime);
         }
-        else
-        {
-            _rigidBody2D.linearVelocityX = 0;
-        }
-
     }
 
     private void Saltar(InputAction.CallbackContext context)
@@ -164,9 +81,9 @@ public class RolunaBehaviour : MonoBehaviour
                 }
             }
         }else if (collision.gameObject.CompareTag("enemigo")){
-            setVida(getVida()-1);
+            _vida--;
             Debug.Log("Vidas: " + _vida);
-            if (getVida() <= 0)
+            if (_vida <= 0)
             {
                 muerte();
             }

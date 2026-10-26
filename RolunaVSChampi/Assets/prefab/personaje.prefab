@@ -171,9 +171,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Roluna
   _movimientoRef: {fileID: -1680190386980627800, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  _dispararRef: {fileID: -2099379676528639254, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   _salto: 7
-  _balaPrefab: {fileID: 2929112953824758934, guid: 0219def21c0e554448c2e4892d942f08, type: 3}
-  _posicionSpawnDerecha: {fileID: 0}
-  _posicionSpawnIzquierda: {fileID: 0}
-  _direccion: 
