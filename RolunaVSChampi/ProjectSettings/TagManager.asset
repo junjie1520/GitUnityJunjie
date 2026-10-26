@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Plataforma
+  - Suelo
+  - enemigo
+  - Invencibilidad
+  - Nitro
+  - Invisibilidad
+  - Berserker
   layers:
   - Default
   - TransparentFX
