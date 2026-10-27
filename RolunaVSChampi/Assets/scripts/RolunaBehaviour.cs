@@ -2,8 +2,10 @@ using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.Timeline;
 
 public class RolunaBehaviour : MonoBehaviour
@@ -24,17 +26,26 @@ public class RolunaBehaviour : MonoBehaviour
     [SerializeField]
     private Transform _puntoDisparo;
 
+
+    [SerializeField]
+    private Transform _limitContacte;
+
+
+    [SerializeField]
+    private Camera _camara;
+
+
+
     private float _coldown = 0.20f;
     private float _tiempoActual;
     private Rigidbody2D _rigidBody2D;
     private bool _puedeSaltar = true;
     private Vector2 _inputMovimiento;
-    private GameObject _plataformaActual;
-    private bool _isBajando = false;
     private float _velocidad = 6f;
     private int _ataque = 1;
     private int _vida = 10;
     private int _puntos = 0;
+    
 
     public string _direccion;
 
@@ -84,7 +95,7 @@ public class RolunaBehaviour : MonoBehaviour
     {   
         _movimientoRef.action.performed -= Saltar;
 
-        _dispararRef.action.performed += Disparar;
+        _dispararRef.action.performed -= Disparar;
 
     }
 
@@ -102,7 +113,7 @@ public class RolunaBehaviour : MonoBehaviour
             */
             GameObject nuevaBala = Instantiate(_balaPrefab, posicionSpawn, Quaternion.identity);
 
-            nuevaBala.GetComponent<BalaBehaviour>().Disparar(direccio, 15);
+            nuevaBala.GetComponent<BalaBehaviour>().Disparar(direccio, _ataque);
             _tiempoActual = _coldown;
         }
 
@@ -112,94 +123,38 @@ public class RolunaBehaviour : MonoBehaviour
     private void Update()
     {
         _inputMovimiento = _movimientoRef.action.ReadValue<Vector2>();
-        if(_tiempoActual <= 0)
+
+        if (_tiempoActual <= 0)
         {
             _tiempoActual = 0;
         }
         else
         {
-            _tiempoActual-=Time.deltaTime;
-
+            _tiempoActual -= Time.deltaTime;
         }
-        if (_inputMovimiento.y < -0.5f && _plataformaActual != null && !_isBajando)
-        {
-            StartCoroutine(DejarseCaer());
-        }
+    }
 
-        if (_inputMovimiento.x < -0.5f)
+    private void FixedUpdate()
+    {
+        if (_inputMovimiento.x < -0.1f)
         {
             _rigidBody2D.linearVelocityX = -_velocidad; 
-            transform.localEulerAngles = Vector3.up * 180;      
+            transform.localEulerAngles = Vector3.up * 180; 
+            _camara.transform.localEulerAngles = Vector3.up * 180;
+            _camara.transform.localPosition = new Vector3(0, 0, 10f);
         }
-        else if (_inputMovimiento.x > 0.5f){
+        else if (_inputMovimiento.x > 0.1f)
+        {
             _rigidBody2D.linearVelocityX = _velocidad;
-            transform.localEulerAngles = Vector3.zero;      
-
+            transform.localEulerAngles = Vector3.zero; 
+            _camara.transform.localEulerAngles = Vector3.zero;
+            _camara.transform.localPosition = new Vector3(0, 0, -10f);
         }
         else
         {
             _rigidBody2D.linearVelocityX = 0;
         }
 
-    }
-
-    private void Saltar(InputAction.CallbackContext context)
-    {
-        Vector2 _inputSalto = context.ReadValue<Vector2>();
-        if (_inputSalto.y > 0.5f){
-            if (_puedeSaltar){
-                _rigidBody2D.AddForceY(_salto, ForceMode2D.Impulse);
-                _puedeSaltar = false;
-            }
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Suelo") || collision.gameObject.CompareTag("Plataforma")){
-            if (_rigidBody2D.linearVelocity.y <= 0.1f){
-                _puedeSaltar = true;
-                if (collision.gameObject.CompareTag("Plataforma")){
-                    _plataformaActual = collision.gameObject;
-                }
-            }
-        }else if (collision.gameObject.CompareTag("enemigo")){
-            setVida(getVida()-1);
-            Debug.Log("Vidas: " + _vida);
-            if (getVida() <= 0)
-            {
-                muerte();
-            }
-        }
-    }
-
-    
-    private void muerte(){
-        Debug.Log("Murio");
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)   
-    {
-        if (collision.gameObject == _plataformaActual){
-            _plataformaActual = null;
-        }
-    }
-
-    private IEnumerator DejarseCaer()
-    {
-        _isBajando = true;
-        PlatformEffector2D effector = _plataformaActual.GetComponent<PlatformEffector2D>();
-        if (effector != null)
-        {
-            effector.rotationalOffset = 180f;
-            yield return new WaitForSeconds(0.5f);
-            effector.rotationalOffset = 0f;
-        }
-        _isBajando = false;
-    }
-
-    private void FixedUpdate()
-    {
         if (_rigidBody2D.linearVelocity.y < 0)
         {
             _rigidBody2D.gravityScale = 3f;
@@ -210,7 +165,60 @@ public class RolunaBehaviour : MonoBehaviour
         }
     }
 
-    private void atacar(){
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        ComprobarSuelo(collision);
+
+        if (collision.gameObject.CompareTag("enemigo"))
+        {
+            setVida(getVida() - 1);
+            Debug.Log("Vidas: " + _vida);
+            if (getVida() <= 0)
+            {
+                muerte();
+            }
+        }
     }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        ComprobarSuelo(collision);
+    }
+
+    private void ComprobarSuelo(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Suelo") && _rigidBody2D.linearVelocity.y <= 0.05f)
+        {
+            foreach (ContactPoint2D contact in collision.contacts)
+            {
+                if (contact.point.y <= _limitContacte.position.y + 0.1f && contact.normal.y > 0.5f)
+                {
+                    _puedeSaltar = true;
+                    break;
+                }
+            }
+        }
+    }
+
+    private void Saltar(InputAction.CallbackContext context)
+    {
+        Vector2 _inputSalto = context.ReadValue<Vector2>();
+        if (_inputSalto.y > 0.5f)
+        {
+            if (_puedeSaltar)
+            {
+                _puedeSaltar = false;
+                _rigidBody2D.linearVelocityY = 0f;
+                _rigidBody2D.AddForceY(_salto, ForceMode2D.Impulse);
+            }
+        }
+    }
+
+    
+    private void muerte(){
+        Debug.Log("Murio");
+    }
+
+
 }

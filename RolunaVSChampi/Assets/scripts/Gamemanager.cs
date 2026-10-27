@@ -1,13 +1,15 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Gamemanager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    private float _time;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void CargarEscena(string nombreEscena)
     {
-        
+        SceneManager.LoadScene(nombreEscena);
     }
 
-  
+    public void Salir()
+{
+    Application.Quit();
+}
 }
