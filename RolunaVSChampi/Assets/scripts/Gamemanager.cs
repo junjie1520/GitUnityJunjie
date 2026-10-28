@@ -32,12 +32,10 @@ public class GameManager : MonoBehaviour
             {
                 _spawnTime = 2;
                 _cantidadChampi = 5;
-                _spawnRemaining = 0;
             }else if (_timeRemaining <= 50)
             {
                 _spawnTime = 3;
                 _cantidadChampi = 3;
-                _spawnRemaining = 0;
             }
         }
         else
