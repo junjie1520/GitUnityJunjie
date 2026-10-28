@@ -146,14 +146,14 @@ RectTransform:
   m_GameObject: {fileID: 69588083}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2758, y: 1.2758, z: 1.2758}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2051011276}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -173, y: -86}
+  m_AnchoredPosition: {x: -220.54, y: -109.72}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &69588085
@@ -178,8 +178,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Roluna VS Champi
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c41c89a15bcc13e43ad470506663087f, type: 2}
-  m_sharedMaterial: {fileID: 9035056995896870772, guid: c41c89a15bcc13e43ad470506663087f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -283,7 +283,7 @@ RectTransform:
   m_GameObject: {fileID: 167872101}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.7163293, y: 2.11, z: 1.8581647}
+  m_LocalScale: {x: 4.741293, y: 2.691938, z: 2.3706465}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2051011276}
@@ -342,7 +342,7 @@ GameObject:
   - component: {fileID: 763787981}
   - component: {fileID: 763787982}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: MenuManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -372,9 +372,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 763787980}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec34a8703dceea34ebd6e45d40ee9697, type: 3}
+  m_Script: {fileID: 11500000, guid: fd8f1e5801324249950504f2d7a41101, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  m_EditorClassIdentifier: Assembly-CSharp::MenuManager
 --- !u!1 &824657505
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,8 +571,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Iniciar partida
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3ab59ba3be8e9e1428e07fade5b877f2, type: 2}
-  m_sharedMaterial: {fileID: 5936557862835299667, guid: 3ab59ba3be8e9e1428e07fade5b877f2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -756,7 +756,7 @@ RectTransform:
   m_GameObject: {fileID: 1526433314}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8463255, y: 0.8463255, z: 0.8463255}
+  m_LocalScale: {x: 1.0797421, y: 1.0797421, z: 1.0797421}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1586989018}
@@ -764,7 +764,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.7, y: 50.3}
+  m_AnchoredPosition: {x: -4.5549, y: 64.171}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1526433316
@@ -812,7 +812,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 763787982}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: Salir
         m_Mode: 1
         m_Arguments:
@@ -920,8 +920,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Salir
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3ab59ba3be8e9e1428e07fade5b877f2, type: 2}
-  m_sharedMaterial: {fileID: 5936557862835299667, guid: 3ab59ba3be8e9e1428e07fade5b877f2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1026,7 +1026,7 @@ RectTransform:
   m_GameObject: {fileID: 1758100970}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8463255, y: 0.8463255, z: 0.8463255}
+  m_LocalScale: {x: 1.0797421, y: 1.0797421, z: 1.0797421}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1089125950}
@@ -1034,7 +1034,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.699994, y: 81.404015}
+  m_AnchoredPosition: {x: -4.5549, y: 103.85}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1758100972
@@ -1082,7 +1082,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 763787982}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: CargarEscena
         m_Mode: 5
         m_Arguments:
