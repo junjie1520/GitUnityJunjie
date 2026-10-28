@@ -1,16 +1,19 @@
+using System;
 using UnityEngine;
 
 public class ChampiSpawner : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField]
+    private Transform[] _spawnPoints;
+    [SerializeField]
+    private ChampiBehaviour _champi;
+    
+    public void Spawn(int cantidad)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        for (int i = 0; i != cantidad; i++)
+        {
+            Transform t = _spawnPoints[UnityEngine.Random.Range(0,11)];
+            Instantiate(_champi, new Vector3(t.position.x,t.position.y), Quaternion.identity);
+        }
     }
 }
