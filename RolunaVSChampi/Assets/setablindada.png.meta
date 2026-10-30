@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4512ad1f93814d1428861c8b53b4df2e
+guid: b0d76a30118611642b2f1a0c133d1fdf
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 958311769011868133
-    second: setablindada_0
+      213: 9043990323696564860
+    second: setablindada2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: setablindada_0
+      name: setablindada2_0
       rect:
         serializedVersion: 2
         x: 1
         y: 1
         width: 28
-        height: 27
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5e157000a7b9c4d00800000000000000
-      internalID: 958311769011868133
+      spriteID: c7af0044845b28d70800000000000000
+      internalID: 9043990323696564860
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      setablindada_0: 958311769011868133
+      setablindada2_0: 9043990323696564860
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

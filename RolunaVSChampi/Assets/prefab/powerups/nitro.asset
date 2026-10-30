@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d537b23364c1214eb73fce2b812b87b, type: 3}
-  m_Name: nitro
+  m_Name: Nitro
   m_EditorClassIdentifier: Assembly-CSharp::SOPowerUp
-  _sprite: {fileID: 21300000, guid: 7ea951eeb1e24f0458badf6b5a137dcb, type: 3}
-  _tag: Nitro
+  _sprite: {fileID: 5585052491399844955, guid: 7ea951eeb1e24f0458badf6b5a137dcb, type: 3}
+  _type: 2
