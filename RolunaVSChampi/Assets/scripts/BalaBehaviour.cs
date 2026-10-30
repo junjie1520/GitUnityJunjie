@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class BalaBehaviour : MonoBehaviour
 {
@@ -12,18 +13,20 @@ public class BalaBehaviour : MonoBehaviour
         rb.linearVelocity = direccio*_velocidad;
     }
 
-    private void Update()
+    void Awake()
     {
-        if(transform.position.x > 50 || transform.position.x < -50)
-        {
-            Destroy(gameObject);
-        }
+        StartCoroutine(destroy());
+    }
+
+    private IEnumerator destroy()
+    {
+        yield return new WaitForSeconds(3f);
+        Destroy(gameObject);
     }
 
     public int dany
     {
         get {return _dany;}
     }
-
 
 }

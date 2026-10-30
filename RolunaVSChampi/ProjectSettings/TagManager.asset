@@ -11,6 +11,7 @@ TagManager:
   - Nitro
   - Invisibilidad
   - Berserker
+  - muerto
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - UI
   - Enemy
   - Bullet
-  - 
+  - Dead
   - 
   - 
   - 
