@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d537b23364c1214eb73fce2b812b87b, type: 3}
-  m_Name: Invisibilidad
+  m_Name: Curacio
   m_EditorClassIdentifier: Assembly-CSharp::SOPowerUp
-  _sprite: {fileID: 21300000, guid: 18926bf5a9c53114589d5b132ea7b7cf, type: 3}
-  _tag: Invisibilidad
+  _sprite: {fileID: -8383901188609177857, guid: 18926bf5a9c53114589d5b132ea7b7cf, type: 3}
+  _type: 1

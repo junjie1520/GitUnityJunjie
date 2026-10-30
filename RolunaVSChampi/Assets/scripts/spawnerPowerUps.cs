@@ -8,11 +8,7 @@ public class spawnerPowerUps : MonoBehaviour
     [SerializeField]
     private SOPowerUp[] _powerUps;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+
 
     // Update is called once per frame
     void Update()
@@ -37,11 +33,7 @@ public class spawnerPowerUps : MonoBehaviour
             0
             );
 
-        powerup.GetComponent<SpriteRenderer>().sprite =
-            selectedPowerUp.Sprite;
-
-       
-        powerup.tag = selectedPowerUp.Tag;
+        powerup.GetComponent<PowerUptrigger>().SetPowerUp(selectedPowerUp);
 
     }
 }
