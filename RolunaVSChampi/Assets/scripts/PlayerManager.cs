@@ -7,35 +7,6 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     private RolunaBehaviour _roluna;
 
-    public void setVida(int vida)
-    {
-        _roluna.setVida(vida);
-    }
-
-    public int getVida()
-    {
-        return _roluna.getVida();
-    }
-
-    public void setAtaque(int ataque)
-    {
-        _roluna.setAtaque(ataque);
-    }
-
-    public int getAtaque()
-    {
-        return _roluna.getAtaque();
-    }
-
-    public int getPuntos()
-    {
-        return _roluna.getPuntos();
-    }
-
-    public void setPuntos(int puntos)
-    {
-        _roluna.setPuntos(puntos);
-    }
 
     public void Invencible(int vida)
     {
@@ -45,21 +16,21 @@ public class PlayerManager : MonoBehaviour
     private IEnumerator InvencibleCoroutine(int vida)
     {
 
-        int vidaOriginal = getVida();
+        int vidaOriginal = _roluna.Vida;
 
         Debug.Log("Invencibilidad activada");
         Debug.Log("Vida original: " + vidaOriginal);
 
-        setVida(vida);
+        _roluna.Vida = vida;
 
-        Debug.Log("Vida invencible: " + getVida());
+        Debug.Log("Vida invencible: " + _roluna.Vida);
 
         yield return new WaitForSeconds(6f);
 
-        setVida(vidaOriginal);
+        _roluna.Vida = vidaOriginal;
 
         Debug.Log("Invencibilidad terminada");
-        Debug.Log("Vida restaurada: " + getVida());
+        Debug.Log("Vida restaurada: " + _roluna.Vida);
     }
 
     public void Curacio(int cura)
@@ -67,11 +38,11 @@ public class PlayerManager : MonoBehaviour
   
 
         Debug.Log("Curacion recogida");
-        Debug.Log("Vida antes: " + getVida());
+        Debug.Log("Vida antes: " + _roluna.Vida);
 
-        setVida(Mathf.Min(getVida() + cura, 10));
+        _roluna.Vida = (Mathf.Min(_roluna.Vida + cura, 10));
 
-        Debug.Log("Vida despues: " + getVida());
+        Debug.Log("Vida despues: " + _roluna.Vida);
     }
 
     /*public void Nitro(float velocidad, float salto)
