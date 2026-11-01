@@ -10,7 +10,7 @@ public class spawnerPowerUps : MonoBehaviour
 
 
 
-    // Update is called once per frame
+  
     void Update()
     {
         _time += Time.deltaTime;
