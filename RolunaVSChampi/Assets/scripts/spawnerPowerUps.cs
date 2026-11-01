@@ -1,40 +1,35 @@
 using UnityEngine;
 
-public class spawnerPowerUps : MonoBehaviour
+public class SpawnerPowerUps : MonoBehaviour
 {
     private float _time;
     [SerializeField]
     private GameObject _prefab;
     [SerializeField]
     private SOPowerUp[] _powerUps;
+    [SerializeField]
+    private ChampiSpawner _spawner;
 
-
-
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        _time += Time.deltaTime;
-        if (_time >= 7)
-        {
-            Spawn();
-            _time = 0f;
-        }
-
+        _spawner.OnChampiMuerto += Spawn;
     }
-    private void Spawn()
+    void OnDestroy()
     {
-        GameObject powerup = Instantiate(_prefab);
-        int c = Random.Range(-2, 54);
-        int x = Random.Range(0, _powerUps.Length);
-        SOPowerUp selectedPowerUp = _powerUps[x];
-        powerup.transform.position = new Vector3(
-            c,
-            27,
-            0
-            );
-
-        powerup.GetComponent<PowerUptrigger>().SetPowerUp(selectedPowerUp);
-
+        if (_spawner != null)
+        {
+            _spawner.OnChampiMuerto -= Spawn;
+        }
+    }
+    private void Spawn(Vector3 posicion)
+    {
+        if (Random.Range(0,4) == 0)
+        {
+            Vector3 _posicionPowerUp = new Vector3(posicion.x, posicion.y + 0.5f, 0f);
+            GameObject powerup = Instantiate(_prefab, _posicionPowerUp, Quaternion.identity);
+            int x = Random.Range(0, _powerUps.Length);
+            powerup.GetComponent<PowerUptrigger>().SetPowerUp(_powerUps[x]);
+        }
     }
 }
 

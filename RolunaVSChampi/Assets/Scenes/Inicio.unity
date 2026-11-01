@@ -146,14 +146,14 @@ RectTransform:
   m_GameObject: {fileID: 69588083}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2758, y: 1.2758, z: 1.2758}
+  m_LocalScale: {x: 2.1478972, y: 2.1478972, z: 2.1478972}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2051011276}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -220.54, y: -109.72}
+  m_AnchoredPosition: {x: -371, y: 85}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &69588085
@@ -179,14 +179,14 @@ MonoBehaviour:
   m_text: Roluna VS Champi
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4279172864
+  m_fontColor: {r: 0, g: 1, b: 0.05660361, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -209,7 +209,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -283,7 +283,7 @@ RectTransform:
   m_GameObject: {fileID: 167872101}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.741293, y: 2.691938, z: 2.3706465}
+  m_LocalScale: {x: 7.982294, y: 4.5320635, z: 3.991147}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2051011276}
@@ -756,7 +756,7 @@ RectTransform:
   m_GameObject: {fileID: 1526433314}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0797421, y: 1.0797421, z: 1.0797421}
+  m_LocalScale: {x: 1.8178203, y: 1.8178203, z: 1.8178203}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1586989018}
@@ -764,7 +764,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.5549, y: 64.171}
+  m_AnchoredPosition: {x: -4.5549, y: -107.999985}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1526433316
@@ -1026,7 +1026,7 @@ RectTransform:
   m_GameObject: {fileID: 1758100970}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0797421, y: 1.0797421, z: 1.0797421}
+  m_LocalScale: {x: 1.8178203, y: 1.8178203, z: 1.8178203}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1089125950}
@@ -1034,7 +1034,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.5549, y: 103.85}
+  m_AnchoredPosition: {x: -4.5549, y: -33}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1758100972
@@ -1179,9 +1179,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
+  m_ScaleFactor: 1.38
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0

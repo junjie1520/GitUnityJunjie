@@ -25,6 +25,7 @@ public class RolunaBehaviour : MonoBehaviour
 
     [SerializeField]
     private Camera _camara;
+    private Vector3 _offsetCamara;
 
     private float _salto = 10f;
     private float _cooldown = 0.20f;
@@ -40,6 +41,8 @@ public class RolunaBehaviour : MonoBehaviour
     private float _duracionDisparo = 0.333f;
     private float _tiempoDisparo = 0f;
     private string _animActual = "";
+    public event Action<int> OnCambioVida;
+    private GameManager _gm;
 
     public int Vida
     {
@@ -51,6 +54,7 @@ public class RolunaBehaviour : MonoBehaviour
             {
                 _vida = 0;
             };
+            OnCambioVida?.Invoke(_vida);
         }
     }
     public float Velocidad
@@ -83,9 +87,15 @@ public class RolunaBehaviour : MonoBehaviour
 
     private void Awake()
     {
+        _gm = GameManager.Singleton;
         _rigidBody2D = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _tiempoActual = 0;
+        _offsetCamara = _camara.transform.localPosition;
+    }
+    void Start()
+    {
+        OnCambioVida?.Invoke(_vida);
     }
 
     private void OnEnable()
@@ -141,17 +151,17 @@ public class RolunaBehaviour : MonoBehaviour
     {
         if (_inputMovimiento.x < -0.1f)
         {
-            _rigidBody2D.linearVelocityX = -_velocidad; 
-            transform.localEulerAngles = Vector3.up * 180; 
-            _camara.transform.localEulerAngles = Vector3.up * 180;
-            _camara.transform.localPosition = new Vector3(0, 0, 10f);
+            _rigidBody2D.linearVelocityX = -_velocidad;
+            transform.eulerAngles = new Vector3(0f, 180f, 0f);
+            _camara.transform.localEulerAngles = new Vector3(0f, 180f, 0f);
+            _camara.transform.localPosition = new Vector3(-_offsetCamara.x, _offsetCamara.y, -_offsetCamara.z);
         }
         else if (_inputMovimiento.x > 0.1f)
         {
             _rigidBody2D.linearVelocityX = _velocidad;
-            transform.localEulerAngles = Vector3.zero; 
-            _camara.transform.localEulerAngles = Vector3.zero;
-            _camara.transform.localPosition = new Vector3(0, 0, -10f);
+            transform.eulerAngles = new Vector3(0f, 0f, 0f);
+            _camara.transform.localEulerAngles = new Vector3(0f, 0f, 0f);
+            _camara.transform.localPosition = _offsetCamara;
         }
         else
         {
@@ -178,7 +188,7 @@ public class RolunaBehaviour : MonoBehaviour
             Vida = Vida - 1;
             if (Vida <= 0)
             {
-                //Llamar GameManager.EndGame con observer
+                _gm.EndGame();
                 return;
             }
         }

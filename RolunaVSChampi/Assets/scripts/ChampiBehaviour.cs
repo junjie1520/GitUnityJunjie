@@ -21,6 +21,7 @@ public class ChampiBehaviour : MonoBehaviour
     private float _zonaMuerta = 0.05f;
     private float _tempoStuck = 0f;
     private float _lastPos;
+    public event Action<Vector3> OnMuerte;
     
     void Awake()
     {
@@ -81,6 +82,7 @@ public class ChampiBehaviour : MonoBehaviour
                     _champi.linearVelocityX = 0f;
                     _animator.Play("Mushroom_Die");
                     _roluna = null;
+                    OnMuerte?.Invoke(transform.position);
                     Destroy(gameObject,1.25f);
                     return;
                 }
