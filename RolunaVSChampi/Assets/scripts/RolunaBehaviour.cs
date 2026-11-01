@@ -1,10 +1,6 @@
 using System;
-using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
-using UnityEngine.Timeline;
 
 public class RolunaBehaviour : MonoBehaviour
 {

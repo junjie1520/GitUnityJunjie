@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d537b23364c1214eb73fce2b812b87b, type: 3}
-  m_Name: Berserker
+  m_Name: berserker
   m_EditorClassIdentifier: Assembly-CSharp::SOPowerUp
   _sprite: {fileID: -438377367035358268, guid: fcf4df528aaaa5448bd2f0137ca203bf, type: 3}
   _type: 3
@@ -18,5 +18,5 @@ MonoBehaviour:
   _velocidad: 0
   _salto: 0
   _corutina: 1
-  _duracion: 0.1
-  _cooldown: 5
+  _duracion: 5
+  _cooldown: 0.1

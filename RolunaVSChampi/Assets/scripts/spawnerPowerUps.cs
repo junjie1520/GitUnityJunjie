@@ -9,6 +9,8 @@ public class SpawnerPowerUps : MonoBehaviour
     private SOPowerUp[] _powerUps;
     [SerializeField]
     private ChampiSpawner _spawner;
+    [SerializeField] 
+    private PlayerManager _playerManager;
 
     void Start()
     {
@@ -28,7 +30,7 @@ public class SpawnerPowerUps : MonoBehaviour
             Vector3 _posicionPowerUp = new Vector3(posicion.x, posicion.y + 0.5f, 0f);
             GameObject powerup = Instantiate(_prefab, _posicionPowerUp, Quaternion.identity);
             int x = Random.Range(0, _powerUps.Length);
-            powerup.GetComponent<PowerUptrigger>().SetPowerUp(_powerUps[x]);
+            powerup.GetComponent<PowerUptrigger>().SetPowerUp(_powerUps[x], _playerManager);
         }
     }
 }
