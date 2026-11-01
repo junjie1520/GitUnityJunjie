@@ -14,3 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SOPowerUp
   _sprite: {fileID: 9043990323696564860, guid: b0d76a30118611642b2f1a0c133d1fdf, type: 3}
   _type: 0
+  _vida: 200
+  _velocidad: 0
+  _salto: 0
+  _corutina: 1
+  _duracion: 5
+  _cooldown: 0
