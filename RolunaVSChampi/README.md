@@ -82,4 +82,4 @@ La partida termina al acabar el tiempo (victoria) o al quedarse Roluna sin vida 
 ## Créditos
 
 - Desarrollo: JunJie, Christian y Nuria.
-- Con ayuda de **Claude** para la super imagen del juego y script de Roluna.
+- Con ayuda de **Claude** para la super imagen del juego, sprite de Roluna y este super README.
