@@ -1,4 +1,4 @@
-using System;
++using System;
 using System.Collections;
 using UnityEngine;
 public class ChampiBehaviour : MonoBehaviour
@@ -104,6 +104,7 @@ public class ChampiBehaviour : MonoBehaviour
                     if (collision.GetContact(i).point.y < _champi.position.y + 0.05f)
                     {
                         _canJump = true;
+                        return;
                     }
                 }
             }
