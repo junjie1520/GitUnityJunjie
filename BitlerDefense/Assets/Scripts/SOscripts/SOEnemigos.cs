@@ -14,10 +14,12 @@ public class SOEnemigos : ScriptableObject
     [SerializeField] private int _hp;
     [SerializeField] private float _speed;
     [SerializeField] private int _damage;
+    [SerializeField] private string _direction;
    
     public int Id => _id;
     public int HP => _hp;
     public float Speed => _speed;
     public int Damage => _damage;
+    public string Direction => _direction;
     
 }

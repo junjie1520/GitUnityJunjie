@@ -18,3 +18,4 @@ MonoBehaviour:
   _hp: 5
   _speed: 15
   _damage: 3
+  _direction: RIGHT

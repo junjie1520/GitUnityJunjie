@@ -22,13 +22,13 @@ public class ConstructionBehaviour : MonoBehaviour
         _contruction = construction;
         GetComponent<SpriteRenderer>().sprite = construction.Sprite;
         if(_contruction.Type == SOConstruction.ConstructionType.Mine){
-            _contruction.GetComponent<CircleCollider2D>().enabled = false;
+            GetComponent<CircleCollider2D>().enabled = false;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D co){
         _enemyList.Add(co.gameObject);
-        if (_shootCoroutine != null){
+        if (_shootCoroutine == null){
             _shootCoroutine = StartCoroutine(ShootCoroutine());
         }
     }
@@ -40,8 +40,6 @@ public class ConstructionBehaviour : MonoBehaviour
     void Awake(){
         Init(_contruction);
     }
-
-    
 
     private IEnumerator ShootCoroutine()
     {

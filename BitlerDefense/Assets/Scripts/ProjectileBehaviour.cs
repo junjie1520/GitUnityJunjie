@@ -4,7 +4,7 @@ public class ProjectileBehaviour : MonoBehaviour
 {
     private GameObject _enemy;
     private float _speed;
-    private float _damage;
+    private int _damage;
     private SOConstruction.ConstructionType _type;
     private Rigidbody2D _rigidBody;
 
@@ -37,10 +37,10 @@ public class ProjectileBehaviour : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            EnemyBehaviour enemyScript = collision.GetComponent<EnemyBehaviour>();
+            EnemyController enemyScript = collision.GetComponent<EnemyController>();
             if (enemyScript != null)
             {
-                enemyScript.RecibirDaño(_damage);
+                enemyScript.Damaged(_damage);
             }
 
             switch (_type)

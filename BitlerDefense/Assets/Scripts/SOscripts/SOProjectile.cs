@@ -7,6 +7,6 @@ public class SOProjectile : ScriptableObject
     public float Speed => _speed;
 
 
-    [SerializeField] private float _damage;
-    public float Damage => _damage;
+    [SerializeField] private int _damage;
+    public int Damage => _damage;
 }

@@ -41,6 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Suelo
+    uniqueID: 2754074375
+    locked: 0
+  - name: Enemigo
+    uniqueID: 2097062357
+    locked: 0
   m_RenderingLayers:
   - Default
   m_MigratedRenderPipelines: []
