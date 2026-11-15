@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SOEnemigos", menuName = "Scriptable Objects/SOEnemigos")]
 public class SOEnemigos : ScriptableObject
 {
-    public enum EnemyType {Normal, Tanque, Rapido, Fantasma}
+    public enum EnemyType {Normal, Tank, Fast, Phantom}
     [SerializeField] private Sprite _sprite;
     public Sprite Sprite => _sprite;
 
@@ -11,13 +11,13 @@ public class SOEnemigos : ScriptableObject
     public EnemyType Type => _type;
 
     [SerializeField] private int _id;
-    [SerializeField] private int _vida;
-    [SerializeField] private float _velocidad;
-    [SerializeField] private int _daño;
+    [SerializeField] private int _hp;
+    [SerializeField] private float _speed;
+    [SerializeField] private int _damage;
    
     public int Id => _id;
-    public int Vida => _vida;
-    public float Velocidad => _velocidad;
-    public float Daño => _daño;
+    public int HP => _hp;
+    public float Speed => _speed;
+    public int Damage => _damage;
     
 }
