@@ -10,6 +10,10 @@ public class SOConstruction : ScriptableObject
     [SerializeField] private ConstructionType _type;
     public ConstructionType Type => _type;
 
+    [SerializeField] private SOAtack _soAtack;
+    public SOAtack soAtack => _soAtack;
+
+
     [SerializeField] private int _id;
     public int Id => _id;
     [SerializeField] private int _damage;
