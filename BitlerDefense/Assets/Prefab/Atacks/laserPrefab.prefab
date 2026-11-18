@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6500502752580761471}
   - component: {fileID: 7296726640333621892}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,9 +77,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingLayerID: 719444757
+  m_SortingLayer: 4
+  m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -7195449788458874145, guid: 802210f0a21f7bb468a73dac38b9cc76, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -101,7 +101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1061893913983477948}
   - component: {fileID: -9104607445501802151}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: laserPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}

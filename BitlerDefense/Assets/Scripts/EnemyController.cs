@@ -22,8 +22,8 @@ public class EnemyController : MonoBehaviour
     void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
     }
-
 
 
     public void Inicializar(SOEnemigos SO, int id)
@@ -58,13 +58,17 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
+        /*
+
+        Timer desactivado porque estaba haciendo pruebas en la escena de la nuria
+
         _timer+= Time.deltaTime;
         if (_timer >= 1)
         {
             Damaged(1);
             _timer -= 1;
         }
-
+        */
     }
 
     private void Death()
@@ -100,6 +104,8 @@ public class EnemyController : MonoBehaviour
     public void Damaged(int damage)
     {
         _hp -= damage;
+        // Debug si atacan, para no mirar el SerializeField todo el rato
+        Debug.Log("Me atacan: "+_hp);
         if (_hp <= 0)
         {
           

@@ -44,6 +44,12 @@ TagManager:
   - name: Suelo
     uniqueID: 2754074375
     locked: 0
+  - name: Base
+    uniqueID: 3808194429
+    locked: 0
+  - name: Bullets
+    uniqueID: 719444757
+    locked: 0
   - name: Enemigo
     uniqueID: 2097062357
     locked: 0

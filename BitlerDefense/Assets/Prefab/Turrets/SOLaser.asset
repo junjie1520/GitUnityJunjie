@@ -16,5 +16,5 @@ MonoBehaviour:
   _type: 1
   _soAtack: {fileID: 11400000, guid: d82c4fe334f0d5b469615dadc8ae9a0f, type: 2}
   _id: 2
-  _damage: 0
-  _cooldown: 0
+  _damage: 1
+  _cooldown: 1

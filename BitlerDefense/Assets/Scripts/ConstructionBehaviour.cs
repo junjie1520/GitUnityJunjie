@@ -19,7 +19,7 @@ public class ConstructionBehaviour : MonoBehaviour
 
     [SerializeField]
     private GameObject _laserPrefab;
-
+    private Coroutine _laserCoroutine;
     private List<GameObject> _enemyList = new List<GameObject>();
 
     private int _nivel = 1;
@@ -68,8 +68,20 @@ public class ConstructionBehaviour : MonoBehaviour
 
     private void Atack()
     {
-
-        Debug.Log(_contruction.Type);
+        // si el enemigo muere, quitarlo de la lista de enemigos
+        for (int i = _enemyList.Count - 1; i >= 0; i--)
+        {
+            if (_enemyList[i] == null)
+            {
+                _enemyList.RemoveAt(i);
+            }
+        }
+        // Si no hay enemigos, no ataca
+        if (_enemyList.Count == 0)
+        {
+            return;
+        }
+        // ---------------------------------------
 
         switch (_contruction.Type)
         {
@@ -78,7 +90,11 @@ public class ConstructionBehaviour : MonoBehaviour
                 atack.GetComponent<AtackBehaviour>().Init(_enemyList[0], _contruction.soAtack, _contruction.Type);
                 break;
             case SOConstruction.ConstructionType.Laser:
-                StartCoroutine(LaserShoot(_enemyList[0]));
+            // Si ya esta lanzando un laser, que no lance otro, muy bien Nuria creado un laser cada tick :)
+                if (_laserCoroutine == null)
+                {
+                    _laserCoroutine = StartCoroutine(LaserShoot(_enemyList[0]));
+                }
                 break;
             case SOConstruction.ConstructionType.Bomb:
                 foreach (GameObject enemy in _enemyList)
@@ -97,28 +113,39 @@ public class ConstructionBehaviour : MonoBehaviour
     private IEnumerator LaserShoot(GameObject enemy)
     {
         GameObject laser = Instantiate(_laserPrefab, transform.position, Quaternion.identity);
-        while (enemy != null)
+        float _damageTime = 0f;
+
+        // si el enemigo ha salido o muerto, parar de acatar
+        while (enemy != null && _enemyList.Contains(enemy))
         {
             Vector2 posTurret = transform.position;
             Vector2 posEnemy = enemy.transform.position;
-            Vector2 direction = (posEnemy - posTurret).normalized;
-            float distance = direction.magnitude;
+            // la diferencia y distancia calculada por separado, para luego usarla para la scale X del laser
+            Vector2 diferencia = posEnemy - posTurret;
+            Vector2 direction = diferencia.normalized;
+            float distance = diferencia.magnitude;
+
             laser.transform.right = direction;
             laser.transform.localScale = new Vector3 (distance,1,1);
 
-            RaycastHit2D[] list = Physics2D.RaycastAll(posTurret, direction, distance, 7);
-            foreach (RaycastHit2D enemyHitted in list)
+            _damageTime -= Time.deltaTime;
+            if (_damageTime <= 0f)
             {
-                if (enemy.TryGetComponent<EnemyController>(out EnemyController enemyScript))
-                {
-                    enemyScript.Damaged(_contruction.soAtack.Damage);
-                }   
-            }
+                _damageTime = _contruction.Cooldown;
 
-            yield return new WaitForSeconds(_contruction.soAtack.Speed);
+                RaycastHit2D[] list = Physics2D.RaycastAll(posTurret, direction, distance, LayerMask.GetMask("Enemy"));
+                foreach (RaycastHit2D enemyHitted in list)
+                {
+                    if (enemyHitted.collider.gameObject.TryGetComponent<EnemyController>(out EnemyController enemyScript))
+                    {
+                        enemyScript.Damaged(_contruction.soAtack.Damage);
+                    }
+                }
+            }
+            yield return null;
         }
 
         Destroy(laser);
-
+        _laserCoroutine = null;
     }
 }
