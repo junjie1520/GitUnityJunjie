@@ -1,0 +1,58 @@
+{
+ "turrets": {
+  "freidora": {
+   "row": 0,
+   "levels": 3
+  },
+  "salsa": {
+   "row": 1,
+   "levels": 3
+  },
+  "lata": {
+   "row": 2,
+   "levels": 3
+  },
+  "generador": {
+   "row": 3,
+   "levels": 3
+  }
+ },
+ "projectiles": {
+  "patata": {
+   "file": "proyectiles_sheet_64.png",
+   "row": 0,
+   "frames": 4,
+   "fps": 10,
+   "loop": true
+  },
+  "salsa": {
+   "file": "salsa_laser_sheet_512x64.png",
+   "frame_size": [
+    512,
+    64
+   ],
+   "frames": 4,
+   "fps": 12,
+   "loop": true,
+   "note": "rayo horizontal; origen en el extremo izquierdo, pivot Left-Center; escalar en X hasta el enemigo"
+  },
+  "lata": {
+   "file": "lata_area_sheet_128.png",
+   "frame_size": [
+    128,
+    128
+   ],
+   "frames": 6,
+   "fps": 12,
+   "loop": false,
+   "note": "efecto de area centrado en la torreta, pivot Center; radio del da\u00f1o ~ 0.45 del frame"
+  },
+  "moneda": {
+   "file": "proyectiles_sheet_64.png",
+   "row": 1,
+   "frames": 4,
+   "fps": 10,
+   "loop": true
+  }
+ }
+}

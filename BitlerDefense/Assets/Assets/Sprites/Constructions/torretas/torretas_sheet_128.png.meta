@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: a3448bd52acbe8b48b2e3c2c1773c2a2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3433094382001281108
+    second: torretas_sheet_128_0
+  - first:
+      213: 6899231625834132795
+    second: torretas_sheet_128_1
+  - first:
+      213: 5863491988887342688
+    second: torretas_sheet_128_2
+  - first:
+      213: 8205631754339182153
+    second: torretas_sheet_128_3
+  - first:
+      213: 5061836168133469278
+    second: torretas_sheet_128_4
+  - first:
+      213: 6207299876909933582
+    second: torretas_sheet_128_5
+  - first:
+      213: -8024160954211886145
+    second: torretas_sheet_128_6
+  - first:
+      213: -2891136586227694807
+    second: torretas_sheet_128_7
+  - first:
+      213: -2043417561834905368
+    second: torretas_sheet_128_8
+  - first:
+      213: -3208618116285266382
+    second: torretas_sheet_128_9
+  - first:
+      213: -4206212251141737241
+    second: torretas_sheet_128_10
+  - first:
+      213: 782450211764804393
+    second: torretas_sheet_128_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: torretas_sheet_128_0
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 400
+        width: 89
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 458539fa62dc4af20800000000000000
+      internalID: 3433094382001281108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: torretas_sheet_128_1
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 399
+        width: 90
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b35fbf82c9efebf50800000000000000
+      internalID: 6899231625834132795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: torretas_sheet_128_2
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 399
+        width: 90
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06e8af4d5ee4f5150800000000000000
+      internalID: 5863491988887342688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: torretas_sheet_128_3
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 272
+        width: 89
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9466d03fa9240e170800000000000000
+      internalID: 8205631754339182153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: torretas_sheet_128_4
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 271
+        width: 90
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e54e1d81d214f3640800000000000000
+      internalID: 5061836168133469278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: torretas_sheet_128_5
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 271
+        width: 90
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e04ea81b952c42650800000000000000
+      internalID: 6207299876909933582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: torretas_sheet_128_6
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 144
+        width: 89
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbb14af302474a090800000000000000
+      internalID: -8024160954211886145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: torretas_sheet_128_7
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 143
+        width: 90
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92343ccb79e90e7d0800000000000000
+      internalID: -2891136586227694807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: torretas_sheet_128_8
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 143
+        width: 92
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e02903dd8254a3e0800000000000000
+      internalID: -2043417561834905368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: torretas_sheet_128_9
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 16
+        width: 89
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2360feeb2d2b873d0800000000000000
+      internalID: -3208618116285266382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: torretas_sheet_128_10
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 15
+        width: 90
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e4fcc83e3880a5c0800000000000000
+      internalID: -4206212251141737241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: torretas_sheet_128_11
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 15
+        width: 94
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92b9bae6252dbda00800000000000000
+      internalID: 782450211764804393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      torretas_sheet_128_0: 3433094382001281108
+      torretas_sheet_128_1: 6899231625834132795
+      torretas_sheet_128_10: -4206212251141737241
+      torretas_sheet_128_11: 782450211764804393
+      torretas_sheet_128_2: 5863491988887342688
+      torretas_sheet_128_3: 8205631754339182153
+      torretas_sheet_128_4: 5061836168133469278
+      torretas_sheet_128_5: 6207299876909933582
+      torretas_sheet_128_6: -8024160954211886145
+      torretas_sheet_128_7: -2891136586227694807
+      torretas_sheet_128_8: -2043417561834905368
+      torretas_sheet_128_9: -3208618116285266382
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

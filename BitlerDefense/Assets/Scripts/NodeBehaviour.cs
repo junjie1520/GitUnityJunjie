@@ -12,8 +12,6 @@ public class NodeBehaviour : MonoBehaviour
     {
         Tilemap _tilemap = GetComponentInParent<Tilemap>();
         Vector3Int _tile = _tilemap.WorldToCell(transform.position);
-        _tilemap = GetComponentInParent<Tilemap>();
-        _tile = _tilemap.WorldToCell(transform.position);
         if (_tilemap.HasTile(_tile + Vector3Int.up))
         {
             _directions.Add("UP");
