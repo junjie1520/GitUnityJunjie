@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dcb4451bfb9801439402cdf13382288, type: 3}
   m_Name: Oso
   m_EditorClassIdentifier: Assembly-CSharp::SOEnemigos
-  _sprite: {fileID: 0}
+  _animator: {fileID: 9100000, guid: a0dc64be0602a444aa7c8e6910c3756d, type: 2}
   _type: 1
-  _id: 2
-  _hp: 15
-  _speed: 3
-  _damage: 10
+  _hp: 10
+  _speed: 1
+  _damage: 3
   _direction: RIGHT

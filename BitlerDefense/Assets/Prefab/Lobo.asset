@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dcb4451bfb9801439402cdf13382288, type: 3}
   m_Name: Lobo
   m_EditorClassIdentifier: Assembly-CSharp::SOEnemigos
-  _sprite: {fileID: 5646579466678814707, guid: 802210f0a21f7bb468a73dac38b9cc76, type: 3}
+  _animator: {fileID: 9100000, guid: 64cdf11c634fc3e48aa6263b3f1242ac, type: 2}
   _type: 0
-  _id: 1
-  _hp: 10
-  _speed: 5
-  _damage: 5
+  _hp: 6
+  _speed: 2
+  _damage: 2
   _direction: RIGHT

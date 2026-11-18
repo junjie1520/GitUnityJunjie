@@ -1,34 +1,44 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] // Luego quitar esto, es para pruebas
     private SOEnemigos _enemy;
+    [SerializeField]
     private int _hp;
     private string _direction;
     private string _nextDirection = "";
     private Vector2 _nodeCenter;
+    private int _id;
+    private float _timer;
     public string Direction => _direction;
     private Rigidbody2D _rigidbody;
     public event Action<Vector3> OnMuerte;
+
+    private Animator _animator;
 
     void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    void Start()
-    {
-        Inicializar(_enemy);
-    }
 
-    public void Inicializar(SOEnemigos SO)
+
+    public void Inicializar(SOEnemigos SO, int id)
     {
+
+        _id = id;
         _enemy = SO;
         _hp = _enemy.HP;
-        GetComponent<SpriteRenderer>().sprite = _enemy.Sprite;
+ 
         ChangeDirection(_enemy.Direction, transform.position);
+
+        _animator = GetComponent<Animator>();
+        _animator.runtimeAnimatorController = _enemy.AnimatorController;
+
+        _animator.Play("FullHP");
     }
 
     void FixedUpdate()
@@ -46,9 +56,20 @@ public class EnemyController : MonoBehaviour
             }
         }
 
+    private void Update()
+    {
+        _timer+= Time.deltaTime;
+        if (_timer >= 1)
+        {
+            Damaged(1);
+            _timer -= 1;
+        }
+
+    }
+
     private void Death()
     {
-        Destroy(gameObject);
+        Destroy(gameObject,0.667f);
     }
 
     public void SetNextDirection(string direction, Vector3 nodeCenter)
@@ -81,7 +102,23 @@ public class EnemyController : MonoBehaviour
         _hp -= damage;
         if (_hp <= 0)
         {
+          
+            _animator.Play("Dead");
             Death();
+          
+
         }
+        else if (_hp <= (_enemy.HP / 4f))
+        {
+            _animator.Play("FaseTerminal");
+           
+        }
+        else if (_hp <= (_enemy.HP / 2f))
+        {
+      
+            _animator.Play("Fase2");
+        
+        }
+        
     }
 }

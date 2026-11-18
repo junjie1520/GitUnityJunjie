@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dcb4451bfb9801439402cdf13382288, type: 3}
   m_Name: Tortuga
   m_EditorClassIdentifier: Assembly-CSharp::SOEnemigos
-  _sprite: {fileID: 0}
+  _animator: {fileID: 9100000, guid: 4774cddc9a463124784a95f83cc4f4cf, type: 2}
   _type: 2
-  _id: 3
   _hp: 5
-  _speed: 15
-  _damage: 3
+  _speed: 4
+  _damage: 1
   _direction: RIGHT
