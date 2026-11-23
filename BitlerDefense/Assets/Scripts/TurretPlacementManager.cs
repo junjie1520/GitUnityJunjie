@@ -1,0 +1,150 @@
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.Tilemaps;
+using UnityEngine.UI;
+
+public class TurretPlacementManager : MonoBehaviour
+{
+    [SerializeField] private Tilemap _tilemap;
+    [SerializeField] private Camera _camera;
+    [SerializeField] private InputActionReference _mousePosition;
+    [SerializeField] private InputActionReference _mouseClick;
+    [SerializeField] private GameObject _constructionPrefab;
+    [SerializeField] private GameObject _placementMenu;
+    [SerializeField] private GameObject _editMenu;
+    [SerializeField] private float _menuSize = 3.5f;
+    [SerializeField] private SOConstruction[] _firstLevels;
+    [SerializeField] private Button _upgradeButton;
+    [SerializeField] private Text _levelLabel;
+
+    private List<ConstructionBehaviour> _constructions = new List<ConstructionBehaviour>();
+    private Vector3Int _selectedCell;
+    private ConstructionBehaviour _selectedConstruction;
+    private bool _clickPending;
+
+    private void OnEnable()
+    {
+        _mouseClick.action.performed += OnClick;
+        _mousePosition.action.Enable();
+        _mouseClick.action.Enable();
+    }
+
+    private void OnDisable()
+    {
+        _mouseClick.action.performed -= OnClick;
+        _mouseClick.action.Disable();
+        _mousePosition.action.Disable();
+        _clickPending = false;
+    }
+
+    private void OnClick(InputAction.CallbackContext context)
+    {
+        _clickPending = true;
+    }
+
+    void Start()
+    {
+        CloseMenus();
+    }
+
+    void Update()
+    {
+        if (!_clickPending)
+        {
+            return;
+        }
+        _clickPending = false;
+
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return; 
+        }
+
+        Vector2 mousePosition = _mousePosition.action.ReadValue<Vector2>();
+        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        Vector3Int cell = _tilemap.WorldToCell(mouseWorldPosition);
+        SelectCell(cell);   
+    }
+
+    public void SelectCell(Vector3Int cell)
+    {
+        CloseMenus();
+
+        if (_tilemap.HasTile(cell))
+        {
+            return;
+        }
+
+        _selectedCell = cell;
+        _selectedConstruction = null;
+        foreach (ConstructionBehaviour construction in _constructions)
+        {
+            if (_tilemap.WorldToCell(construction.transform.position) == cell)
+            {
+                _selectedConstruction = construction;
+                break;
+            }
+        }
+
+        if (_selectedConstruction == null)
+        {
+            ShowMenu(_placementMenu);
+        }
+        else
+        {
+            _upgradeButton.interactable = _selectedConstruction.Construction.NextLevel != null;
+            _levelLabel.text = "N." + _selectedConstruction.Construction.Level;
+            ShowMenu(_editMenu);
+        }
+    }
+
+    public void Place(int type)
+    {
+        Vector3 position = _tilemap.GetCellCenterWorld(_selectedCell);
+        GameObject newConstruction = Instantiate(_constructionPrefab, position, Quaternion.identity);
+        ConstructionBehaviour construction = newConstruction.GetComponent<ConstructionBehaviour>();
+        construction.Init(_firstLevels[type]);
+        _constructions.Add(construction);
+        CloseMenus();
+    }
+
+    public void Upgrade()
+    {
+        if (_selectedConstruction == null || _selectedConstruction.Construction.NextLevel == null)
+        {
+            return;
+        }
+
+        _selectedConstruction.Init(_selectedConstruction.Construction.NextLevel);
+        _upgradeButton.interactable = _selectedConstruction.Construction.NextLevel != null;
+        _levelLabel.text = "N." + _selectedConstruction.Construction.Level;
+    }
+
+    public void Remove()
+    {
+        if (_selectedConstruction == null)
+        {
+            return;
+        }
+
+        _constructions.Remove(_selectedConstruction);
+        Destroy(_selectedConstruction.gameObject);
+        CloseMenus();
+    }
+
+    public void CloseMenus()
+    {
+        _placementMenu.SetActive(false);
+        _editMenu.SetActive(false);
+        _selectedConstruction = null;
+    }
+
+    private void ShowMenu(GameObject menu)
+    {
+        menu.transform.localScale = Vector3.one * (_menuSize / 100f);
+        menu.transform.position = _tilemap.GetCellCenterWorld(_selectedCell);
+        menu.SetActive(true);
+    }
+}

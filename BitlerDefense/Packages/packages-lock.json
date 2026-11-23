@@ -181,6 +181,13 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.unity.nuget.newtonsoft-json": {
+      "version": "3.2.2",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
     "com.unity.render-pipelines.core": {
       "version": "17.4.0",
       "depth": 1,
@@ -278,6 +285,17 @@
         "com.unity.modules.jsonserialize": "1.0.0"
       },
       "url": "https://packages.unity.com"
+    },
+    "com.zloybest.unitymcp": {
+      "version": "file:com.zloybest.unitymcp",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.inputsystem": "1.18.0",
+        "com.unity.nuget.newtonsoft-json": "3.2.2",
+        "com.unity.test-framework": "1.6.0",
+        "com.unity.ugui": "2.0.0"
+      }
     },
     "com.unity.modules.accessibility": {
       "version": "1.0.0",

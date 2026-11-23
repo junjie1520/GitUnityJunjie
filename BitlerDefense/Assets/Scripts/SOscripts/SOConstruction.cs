@@ -4,6 +4,11 @@ using UnityEngine;
 public class SOConstruction : ScriptableObject
 {
     public enum ConstructionType { Projectil, Laser, Bomb, Mine }
+    [SerializeField] private int _level = 1;
+    public int Level => _level;
+    [SerializeField] private SOConstruction _nextLevel;
+    public SOConstruction NextLevel => _nextLevel;
+
     [SerializeField] private Sprite _sprite;
     public Sprite Sprite => _sprite;
 

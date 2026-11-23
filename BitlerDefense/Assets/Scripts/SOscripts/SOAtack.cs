@@ -14,5 +14,8 @@ public class SOAtack : ScriptableObject
     [SerializeField] private Sprite _sprite;
     public Sprite Sprite => _sprite;
 
+    [SerializeField] private RuntimeAnimatorController _animation;
+    public RuntimeAnimatorController Animation => _animation;
+
 
 }
