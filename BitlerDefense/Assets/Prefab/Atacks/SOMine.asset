@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6b6af460b724964d8460b81e4f2d18d, type: 3}
   m_Name: SOMine
   m_EditorClassIdentifier: Assembly-CSharp::SOAtack
-  _speed: 10
-  _damage: 0
+  _speed: 0
   _sprite: {fileID: 2768169851027559981, guid: 88d89d9a9d4c8c349819616428fa6d0f, type: 3}
   _animation: {fileID: 9100000, guid: baa4cf13f79fd12408ebd1e8903efa11, type: 2}

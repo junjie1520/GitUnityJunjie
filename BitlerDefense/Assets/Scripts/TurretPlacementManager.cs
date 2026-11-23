@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class TurretPlacementManager : MonoBehaviour
 {
     [SerializeField] private Tilemap _tilemap;
-    [SerializeField] private Camera _camera;
     [SerializeField] private InputActionReference _mousePosition;
     [SerializeField] private InputActionReference _mouseClick;
     [SerializeField] private GameObject _constructionPrefab;
@@ -18,6 +17,7 @@ public class TurretPlacementManager : MonoBehaviour
     [SerializeField] private SOConstruction[] _firstLevels;
     [SerializeField] private Button _upgradeButton;
     [SerializeField] private Text _levelLabel;
+    [SerializeField] private GameManagerJunJie _moneyManager;
 
     private List<ConstructionBehaviour> _constructions = new List<ConstructionBehaviour>();
     private Vector3Int _selectedCell;
@@ -94,32 +94,52 @@ public class TurretPlacementManager : MonoBehaviour
         }
         else
         {
-            _upgradeButton.interactable = _selectedConstruction.Construction.NextLevel != null;
-            _levelLabel.text = "N." + _selectedConstruction.Construction.Level;
+            _upgradeButton.interactable = _selectedConstruction.Level == 3 ? false : true;
+            _levelLabel.text = "L." + _selectedConstruction.Level;
             ShowMenu(_editMenu);
         }
     }
 
     public void Place(int type)
     {
-        Vector3 position = _tilemap.GetCellCenterWorld(_selectedCell);
-        GameObject newConstruction = Instantiate(_constructionPrefab, position, Quaternion.identity);
-        ConstructionBehaviour construction = newConstruction.GetComponent<ConstructionBehaviour>();
-        construction.Init(_firstLevels[type]);
-        _constructions.Add(construction);
-        CloseMenus();
+        if (_moneyManager.BuyTurret(_firstLevels[type].Value))
+        {
+            Vector3 position = _tilemap.GetCellCenterWorld(_selectedCell);
+            GameObject newConstruction = Instantiate(_constructionPrefab, position, Quaternion.identity);
+            ConstructionBehaviour construction = newConstruction.GetComponent<ConstructionBehaviour>();
+            construction.Init(_firstLevels[type]);
+            _constructions.Add(construction);
+            CloseMenus();
+        }
+        else
+        {
+            CloseMenus();
+            // Mostrar TOAST
+        }
+        
     }
 
     public void Upgrade()
     {
-        if (_selectedConstruction == null || _selectedConstruction.Construction.NextLevel == null)
+        if (_selectedConstruction == null || _selectedConstruction.Level == 3)
         {
             return;
         }
+        if (_moneyManager.BuyTurret(_selectedConstruction.Construction.Value+(_selectedConstruction.Level*10)))
+        {
+            _selectedConstruction.Level++;
+            _upgradeButton.interactable = _selectedConstruction.Level == 3 ? false : true;
+            _levelLabel.text = "L." + _selectedConstruction.Level;
+            CloseMenus();
+        }
+        else
+        {
+            CloseMenus();
+            // Mostrar TOAST
+        }
+        
 
-        _selectedConstruction.Init(_selectedConstruction.Construction.NextLevel);
-        _upgradeButton.interactable = _selectedConstruction.Construction.NextLevel != null;
-        _levelLabel.text = "N." + _selectedConstruction.Construction.Level;
+        
     }
 
     public void Remove()

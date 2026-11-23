@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e7871867fb276845b31aa8424883b13, type: 3}
   m_Name: SOProjectile
   m_EditorClassIdentifier: Assembly-CSharp::SOConstruction
-  _level: 1
-  _nextLevel: {fileID: 11400000, guid: 1abf32b0c6853014e99684c7f4151f1a, type: 2}
-  _sprite: {fileID: 5295819393275907455, guid: 1a0f4263c4996e24394cab5bc7a477a4, type: 3}
+  _sprite1: {fileID: 5295819393275907455, guid: 1a0f4263c4996e24394cab5bc7a477a4, type: 3}
+  _sprite2: {fileID: -2440037443778051667, guid: b80d45742701b8f4fac4f75c2916c6ec, type: 3}
+  _sprite3: {fileID: 5474847260113968094, guid: a797e58410f6f584da6919c42b56a410, type: 3}
   _type: 0
   _soAtack: {fileID: 11400000, guid: 93eb2157d3dcfe244ac7bd981d211d29, type: 2}
-  _id: 1
   _damage: 1
   _cooldown: 0.5
+  _value: 20

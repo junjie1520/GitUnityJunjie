@@ -6,6 +6,7 @@ public class EnemyController : MonoBehaviour
 {
     [SerializeField] // Luego quitar esto, es para pruebas
     private SOEnemigos _enemy;
+    public SOEnemigos Enemy => _enemy;
     [SerializeField]
     private int _hp;
     private string _direction;

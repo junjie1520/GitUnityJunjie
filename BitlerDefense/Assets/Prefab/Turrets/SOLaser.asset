@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e7871867fb276845b31aa8424883b13, type: 3}
   m_Name: SOLaser
   m_EditorClassIdentifier: Assembly-CSharp::SOConstruction
-  _level: 1
-  _nextLevel: {fileID: 11400000, guid: 885666caf4f057a45b67d6cea4d88b88, type: 2}
-  _sprite: {fileID: -6061629712221012431, guid: 26bab61d32222354e884bb7eca024329, type: 3}
+  _sprite1: {fileID: -6061629712221012431, guid: 26bab61d32222354e884bb7eca024329, type: 3}
+  _sprite2: {fileID: 7778450136061581938, guid: 3f58a7f7a19562c479b843f3978f8813, type: 3}
+  _sprite3: {fileID: -2191774309968709179, guid: c5aa9fae59cd7f84cb0c52cb58c13a11, type: 3}
   _type: 1
   _soAtack: {fileID: 11400000, guid: d82c4fe334f0d5b469615dadc8ae9a0f, type: 2}
-  _id: 2
   _damage: 1
   _cooldown: 1
+  _value: 40

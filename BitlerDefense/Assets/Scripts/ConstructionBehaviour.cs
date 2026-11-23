@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class ConstructionBehaviour : MonoBehaviour
 {
-
-
     [SerializeField]
     private SOConstruction _contruction;
 
@@ -16,6 +14,16 @@ public class ConstructionBehaviour : MonoBehaviour
     [SerializeField]
     private GameObject _AtackPrefab;
 
+    [SerializeField]
+    private int _level;
+    public int Level
+    {
+        get{return _level;}
+        set{_level = value;
+            AddLevel();}
+    }
+    [SerializeField]
+    private int _damage;
 
     [SerializeField]
     private GameObject _laserPrefab;
@@ -27,17 +35,30 @@ public class ConstructionBehaviour : MonoBehaviour
 
     public void Init(SOConstruction construction)
     {
+        if (_level == 0)
+        {
+            _level = 1;
+        }
         _contruction = construction;
         if (construction == null) return;
-        GetComponent<SpriteRenderer>().sprite = construction.Sprite;
+        AddLevel();
         GetComponent<CircleCollider2D>().enabled = construction.Type != SOConstruction.ConstructionType.Mine;
     }
 
     private void OnTriggerEnter2D(Collider2D co)
     {
-        _enemyList.Add(co.gameObject);
+        if (co.GetComponent<EnemyController>().Enemy.Type == SOEnemigos.EnemyType.Phantom)
+        {
+            if (_contruction.Type == SOConstruction.ConstructionType.Bomb)
+            {
+                _enemyList.Add(co.gameObject);
+            }
+        }
+        else
+        {
+            _enemyList.Add(co.gameObject);
+        }
         Debug.Log(_enemyList);
-
         if (_shootCoroutine == null)
         {
             _shootCoroutine = StartCoroutine(ShootCoroutine());
@@ -67,29 +88,19 @@ public class ConstructionBehaviour : MonoBehaviour
 
     private void Atack()
     {
-        // si el enemigo muere, quitarlo de la lista de enemigos
-        for (int i = _enemyList.Count - 1; i >= 0; i--)
-        {
-            if (_enemyList[i] == null)
-            {
-                _enemyList.RemoveAt(i);
-            }
-        }
-        // Si no hay enemigos, no ataca
+        _enemyList.Remove(null);
         if (_enemyList.Count == 0)
         {
             return;
         }
-        // ---------------------------------------
 
         switch (_contruction.Type)
         {
             case SOConstruction.ConstructionType.Projectil:
                 GameObject atack = Instantiate(_AtackPrefab, transform.position, Quaternion.identity);
-                atack.GetComponent<AtackBehaviour>().Init(_enemyList[0], _contruction.soAtack, _contruction.Type);
+                atack.GetComponent<AtackBehaviour>().Init(_enemyList[0], _contruction.soAtack, _damage);
                 break;
             case SOConstruction.ConstructionType.Laser:
-            // Si ya esta lanzando un laser, que no lance otro, muy bien Nuria creado un laser cada tick :)
                 if (_laserCoroutine == null)
                 {
                     _laserCoroutine = StartCoroutine(LaserShoot(_enemyList[0]));
@@ -98,13 +109,11 @@ public class ConstructionBehaviour : MonoBehaviour
             case SOConstruction.ConstructionType.Bomb:
                 if (_contruction.soAtack != null)
                 {
+                    GameObject bomb = Instantiate(_AtackPrefab, transform.position, Quaternion.identity);
+                    bomb.GetComponent<AtackBehaviour>().Init(null,_contruction.soAtack, 0);
                     foreach (GameObject candidate in _enemyList)
                     {
-                        if (!candidate.TryGetComponent<EnemyController>(out _)) continue;
-                        GameObject bomb = new GameObject("BombEffect");
-                        bomb.transform.position = transform.position;
-                        bomb.AddComponent<BombAttackEffect>().Init(candidate, _contruction.soAtack, GetComponent<SpriteRenderer>());
-                        break;
+                        candidate.GetComponent<EnemyController>().Damaged(_contruction.Damage);
                     }
                 }
                 break;
@@ -122,12 +131,10 @@ public class ConstructionBehaviour : MonoBehaviour
             laserAnimator.runtimeAnimatorController = _contruction.soAtack.Animation;
         float _damageTime = 0f;
 
-        // si el enemigo ha salido o muerto, parar de acatar
         while (enemy != null && _enemyList.Contains(enemy))
         {
             Vector2 posTurret = transform.position;
             Vector2 posEnemy = enemy.transform.position;
-            // la diferencia y distancia calculada por separado, para luego usarla para la scale X del laser
             Vector2 diferencia = posEnemy - posTurret;
             Vector2 direction = diferencia.normalized;
             float distance = diferencia.magnitude;
@@ -145,7 +152,7 @@ public class ConstructionBehaviour : MonoBehaviour
                 {
                     if (enemyHitted.collider.gameObject.TryGetComponent<EnemyController>(out EnemyController enemyScript))
                     {
-                        enemyScript.Damaged(_contruction.soAtack.Damage);
+                        enemyScript.Damaged(_damage);
                     }
                 }
             }
@@ -160,5 +167,26 @@ public class ConstructionBehaviour : MonoBehaviour
     private void OnDestroy()
     {
         if (_activeLaser != null) Destroy(_activeLaser);
+    }
+
+    private void AddLevel()
+    {
+        switch (_level)
+        {
+            case 1:
+                GetComponent<SpriteRenderer>().sprite = _contruction.Sprite1;
+                _damage = _contruction.Damage;
+                break;
+            case 2:
+                GetComponent<SpriteRenderer>().sprite = _contruction.Sprite2;
+                _damage = _contruction.Damage *2;
+                break;
+            case 3:
+                GetComponent<SpriteRenderer>().sprite = _contruction.Sprite3;
+                _damage = _contruction.Damage *3;
+                break; 
+            default:
+                break;
+        }
     }
 }

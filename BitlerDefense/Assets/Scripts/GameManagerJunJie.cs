@@ -4,13 +4,12 @@ using UnityEngine;
 public class GameManagerJunJie : MonoBehaviour
 {
     [SerializeField]
-    private int Money;
+    private int _money;
     private int MinesL1;
     private int MinesL2;
     private int MinesL3;
     void Start()
     {
-        Money = 0;
         MinesL1 = 0;
         MinesL2 = 0;
         MinesL3 = 0;
@@ -30,8 +29,21 @@ public class GameManagerJunJie : MonoBehaviour
 
     private IEnumerator AddMoney()
     {
-        Money += 5 + (MinesL1*5) + (MinesL2*6) + (MinesL3*7);
+        _money += 5 + (MinesL1*5) + (MinesL2*6) + (MinesL3*7);
         yield return new WaitForSeconds(3f);
         StartCoroutine(AddMoney());
+    }
+
+    public bool BuyTurret(int value)
+    {
+        if (_money - value < 0)
+        {
+            return false;
+        }
+        else
+        {
+            _money -= value;
+            return true;
+        }
     }
 }

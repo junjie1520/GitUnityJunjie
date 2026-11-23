@@ -6,11 +6,6 @@ public class SOAtack : ScriptableObject
     [SerializeField] private float _speed = 10f;
     public float Speed => _speed;   
 
-
-    [SerializeField] private int _damage;
-    public int Damage => _damage;
-
-
     [SerializeField] private Sprite _sprite;
     public Sprite Sprite => _sprite;
 
