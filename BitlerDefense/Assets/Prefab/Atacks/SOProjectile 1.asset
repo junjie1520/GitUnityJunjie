@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SOProjectile
   _speed: 6
   _damage: 2
-  _sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  _sprite: {fileID: -4330990996707152403, guid: 88d89d9a9d4c8c349819616428fa6d0f, type: 3}
+  _animation: {fileID: 9100000, guid: 6c8a2e0bf92ed314687f1da39f4095f7, type: 2}

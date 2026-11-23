@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e7871867fb276845b31aa8424883b13, type: 3}
+  m_Name: SOLaser_Level3
+  m_EditorClassIdentifier: Assembly-CSharp::SOConstruction
+  _level: 3
+  _nextLevel: {fileID: 0}
+  _sprite: {fileID: -2191774309968709179, guid: c5aa9fae59cd7f84cb0c52cb58c13a11, type: 3}
+  _type: 1
+  _soAtack: {fileID: 11400000, guid: 50ade9c853b0c34439686a660af6d718, type: 2}
+  _id: 2
+  _damage: 1
+  _cooldown: 0.65

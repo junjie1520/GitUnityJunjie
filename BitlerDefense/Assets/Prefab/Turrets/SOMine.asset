@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e7871867fb276845b31aa8424883b13, type: 3}
   m_Name: SOMine
   m_EditorClassIdentifier: Assembly-CSharp::SOConstruction
-  _sprite: {fileID: 0}
+  _level: 1
+  _nextLevel: {fileID: 11400000, guid: 6b33172564ca34e429a5d82e7111a363, type: 2}
+  _sprite: {fileID: 2681843794114458079, guid: 9d019fa21e5a4a740b1e0986c035736c, type: 3}
   _type: 3
+  _soAtack: {fileID: 11400000, guid: bfb0bbeed2efe23468545ba0fceb5f36, type: 2}
   _id: 0
   _damage: 0
-  _cooldown: 0
+  _cooldown: 3

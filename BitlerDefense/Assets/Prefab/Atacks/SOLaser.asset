@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SOAtack
   _speed: 6
   _damage: 1
-  _sprite: {fileID: -1400832232712754758, guid: 802210f0a21f7bb468a73dac38b9cc76, type: 3}
+  _sprite: {fileID: 3790714457425297248, guid: 8165a1cf81216ea40bd2644fe328a279, type: 3}
+  _animation: {fileID: 9100000, guid: 49bda4da97098d54eb95fe257ae4d8e0, type: 2}

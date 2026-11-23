@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: SOBomb 1
   m_EditorClassIdentifier: Assembly-CSharp::SOAtack
   _speed: 10
-  _damage: 0
-  _sprite: {fileID: 0}
+  _damage: 1
+  _sprite: {fileID: 8152952013253063832, guid: fb78ba3ed67f23f459ca10edb85a18e6, type: 3}
+  _animation: {fileID: 9100000, guid: f220e94a271648240836c8e55d47ac28, type: 2}

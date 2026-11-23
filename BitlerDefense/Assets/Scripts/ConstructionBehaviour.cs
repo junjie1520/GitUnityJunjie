@@ -20,18 +20,17 @@ public class ConstructionBehaviour : MonoBehaviour
     [SerializeField]
     private GameObject _laserPrefab;
     private Coroutine _laserCoroutine;
+    private GameObject _activeLaser;
     private List<GameObject> _enemyList = new List<GameObject>();
 
-    private int _nivel = 1;
+    public SOConstruction Construction => _contruction;
 
-    void Init(SOConstruction construction)
+    public void Init(SOConstruction construction)
     {
         _contruction = construction;
+        if (construction == null) return;
         GetComponent<SpriteRenderer>().sprite = construction.Sprite;
-        if (_contruction.Type == SOConstruction.ConstructionType.Mine)
-        {
-            GetComponent<CircleCollider2D>().enabled = false;
-        }
+        GetComponent<CircleCollider2D>().enabled = construction.Type != SOConstruction.ConstructionType.Mine;
     }
 
     private void OnTriggerEnter2D(Collider2D co)
@@ -52,7 +51,7 @@ public class ConstructionBehaviour : MonoBehaviour
 
     void Awake()
     {
-        Init(_contruction);
+        if (_contruction != null) Init(_contruction);
     }
 
     private IEnumerator ShootCoroutine()
@@ -97,11 +96,15 @@ public class ConstructionBehaviour : MonoBehaviour
                 }
                 break;
             case SOConstruction.ConstructionType.Bomb:
-                foreach (GameObject enemy in _enemyList)
+                if (_contruction.soAtack != null)
                 {
-                    if (enemy.TryGetComponent<EnemyController>(out EnemyController enemyScript))
+                    foreach (GameObject candidate in _enemyList)
                     {
-                        enemyScript.Damaged(_contruction.soAtack.Damage);
+                        if (!candidate.TryGetComponent<EnemyController>(out _)) continue;
+                        GameObject bomb = new GameObject("BombEffect");
+                        bomb.transform.position = transform.position;
+                        bomb.AddComponent<BombAttackEffect>().Init(candidate, _contruction.soAtack, GetComponent<SpriteRenderer>());
+                        break;
                     }
                 }
                 break;
@@ -113,6 +116,10 @@ public class ConstructionBehaviour : MonoBehaviour
     private IEnumerator LaserShoot(GameObject enemy)
     {
         GameObject laser = Instantiate(_laserPrefab, transform.position, Quaternion.identity);
+        _activeLaser = laser;
+        Animator laserAnimator = laser.GetComponent<Animator>();
+        if (laserAnimator != null && _contruction.soAtack.Animation != null)
+            laserAnimator.runtimeAnimatorController = _contruction.soAtack.Animation;
         float _damageTime = 0f;
 
         // si el enemigo ha salido o muerto, parar de acatar
@@ -146,6 +153,12 @@ public class ConstructionBehaviour : MonoBehaviour
         }
 
         Destroy(laser);
+        _activeLaser = null;
         _laserCoroutine = null;
+    }
+
+    private void OnDestroy()
+    {
+        if (_activeLaser != null) Destroy(_activeLaser);
     }
 }

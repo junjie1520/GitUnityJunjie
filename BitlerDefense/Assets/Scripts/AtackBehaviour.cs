@@ -23,6 +23,9 @@ public class AtackBehaviour : MonoBehaviour
         _damage = SOAtack.Damage;
         _type = type;
         _sprite = SOAtack.Sprite;
+        GetComponent<SpriteRenderer>().sprite = _sprite;
+        Animator animator = GetComponent<Animator>();
+        if (animator != null) animator.runtimeAnimatorController = SOAtack.Animation;
     }
 
 

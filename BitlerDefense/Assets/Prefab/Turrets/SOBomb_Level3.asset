@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e7871867fb276845b31aa8424883b13, type: 3}
+  m_Name: SOBomb_Level3
+  m_EditorClassIdentifier: Assembly-CSharp::SOConstruction
+  _level: 3
+  _nextLevel: {fileID: 0}
+  _sprite: {fileID: -959849902869093505, guid: e4064e64ce6a64443aa2599d33fee607, type: 3}
+  _type: 2
+  _soAtack: {fileID: 11400000, guid: fc990fcccbbb6af40b3907fc971976e5, type: 2}
+  _id: 3
+  _damage: 1
+  _cooldown: 0.7
