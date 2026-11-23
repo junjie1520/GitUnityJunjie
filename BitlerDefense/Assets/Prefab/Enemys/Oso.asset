@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SOEnemigos
   _animator: {fileID: 9100000, guid: a0dc64be0602a444aa7c8e6910c3756d, type: 2}
   _type: 1
-  _hp: 10
-  _speed: 1
+  _hp: 20
+  _speed: 0.75
   _damage: 3
   _direction: RIGHT
