@@ -44,18 +44,16 @@ public class EnemyController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (_nextDirection  == "")
-        {
-            return;
-        }
+        if (_nextDirection == "") return;
 
+        Vector2 haciaNodo = _nodeCenter - _rigidbody.position;
         float _step = _enemy.Speed * Time.fixedDeltaTime;
-        if (Vector2.Distance(_rigidbody.position, _nodeCenter) <= _step)
-            {
-                ChangeDirection(_nextDirection, _nodeCenter);
-                _nextDirection = "";
-            }
+        if (Vector2.Dot(haciaNodo, _rigidbody.linearVelocity.normalized) <= _step)
+        {
+            ChangeDirection(_nextDirection, _nodeCenter);
+            _nextDirection = "";
         }
+    }
 
     private void Update()
     {
