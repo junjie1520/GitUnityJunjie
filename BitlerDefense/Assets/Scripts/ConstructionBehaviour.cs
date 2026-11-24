@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
 public class ConstructionBehaviour : MonoBehaviour
@@ -32,6 +30,7 @@ public class ConstructionBehaviour : MonoBehaviour
     private List<GameObject> _enemyList = new List<GameObject>();
 
     public SOConstruction Construction => _contruction;
+    private SpriteRenderer _sprite;
 
     public void Init(SOConstruction construction)
     {
@@ -58,7 +57,6 @@ public class ConstructionBehaviour : MonoBehaviour
         {
             _enemyList.Add(co.gameObject);
         }
-        Debug.Log(_enemyList);
         if (_shootCoroutine == null)
         {
             _shootCoroutine = StartCoroutine(ShootCoroutine());
@@ -72,18 +70,18 @@ public class ConstructionBehaviour : MonoBehaviour
 
     void Awake()
     {
-        if (_contruction != null) Init(_contruction);
+        _sprite = GetComponent<SpriteRenderer>();
+    if (_contruction != null) Init(_contruction);
     }
 
     private IEnumerator ShootCoroutine()
     {
-        Atack();
-        yield return new WaitForSeconds(_contruction.Cooldown);
-        _shootCoroutine = null;
-        if (_enemyList.Count > 0)
+        while (_enemyList.Count > 0)
         {
-            _shootCoroutine = StartCoroutine(ShootCoroutine());
+            Atack();
+            yield return new WaitForSeconds(_contruction.Cooldown);
         }
+        _shootCoroutine = null;
     }
 
     private void Atack()
@@ -98,7 +96,7 @@ public class ConstructionBehaviour : MonoBehaviour
         {
             case SOConstruction.ConstructionType.Projectil:
                 GameObject atack = Instantiate(_AtackPrefab, transform.position, Quaternion.identity);
-                atack.GetComponent<AtackBehaviour>().Init(_enemyList[0], _contruction.soAtack, _damage);
+                atack.GetComponent<AtackBehaviour>().Init(_enemyList[0], _contruction.soAtack, _damage, false);
                 break;
             case SOConstruction.ConstructionType.Laser:
                 if (_laserCoroutine == null)
@@ -110,10 +108,10 @@ public class ConstructionBehaviour : MonoBehaviour
                 if (_contruction.soAtack != null)
                 {
                     GameObject bomb = Instantiate(_AtackPrefab, transform.position, Quaternion.identity);
-                    bomb.GetComponent<AtackBehaviour>().Init(null,_contruction.soAtack, 0);
+                    bomb.GetComponent<AtackBehaviour>().Init(null,_contruction.soAtack, 0, true);
                     foreach (GameObject candidate in _enemyList)
                     {
-                        candidate.GetComponent<EnemyController>().Damaged(_contruction.Damage);
+                        candidate.GetComponent<EnemyController>().Damaged(_damage);
                     }
                 }
                 break;
@@ -152,7 +150,10 @@ public class ConstructionBehaviour : MonoBehaviour
                 {
                     if (enemyHitted.collider.gameObject.TryGetComponent<EnemyController>(out EnemyController enemyScript))
                     {
-                        enemyScript.Damaged(_damage);
+                        if (enemyScript.Enemy.Type != SOEnemigos.EnemyType.Phantom)
+                        {
+                            enemyScript.Damaged(_damage);
+                        }
                     }
                 }
             }
@@ -174,15 +175,15 @@ public class ConstructionBehaviour : MonoBehaviour
         switch (_level)
         {
             case 1:
-                GetComponent<SpriteRenderer>().sprite = _contruction.Sprite1;
+                _sprite.sprite = _contruction.Sprite1;
                 _damage = _contruction.Damage;
                 break;
             case 2:
-                GetComponent<SpriteRenderer>().sprite = _contruction.Sprite2;
+                _sprite.sprite = _contruction.Sprite2;
                 _damage = _contruction.Damage *2;
                 break;
             case 3:
-                GetComponent<SpriteRenderer>().sprite = _contruction.Sprite3;
+                _sprite.sprite = _contruction.Sprite3;
                 _damage = _contruction.Damage *3;
                 break; 
             default:

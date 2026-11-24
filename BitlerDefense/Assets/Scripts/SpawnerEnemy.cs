@@ -1,25 +1,19 @@
-
 using UnityEngine;
-using static SOEnemigos;
 
 public class SpawnerEnemy : MonoBehaviour
 {
     [SerializeField]
     private GameObject _enemyPrefab;
-
-    private int _id = 0;
-
-    public void Spawn(SOEnemigos enemyType)
+    public EnemyController Spawn(SOEnemigos enemyType)
     {
 
-        GameObject evil = Instantiate(
+        GameObject enemy = Instantiate(
                 _enemyPrefab,
                 transform.position,
                 Quaternion.identity
             );
-
-
-        evil.GetComponent<EnemyController>().Inicializar(enemyType,_id++);
-
+        EnemyController enemyC = enemy.GetComponent<EnemyController>();
+        enemyC.Inicializar(enemyType);
+        return enemyC;
     }
 }

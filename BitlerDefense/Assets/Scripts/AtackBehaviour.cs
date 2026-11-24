@@ -7,7 +7,7 @@ public class AtackBehaviour : MonoBehaviour
     private float _speed;
     private int _damage;
     private Rigidbody2D _rigidBody;
-    
+    private bool _destroying = false;
     private Sprite _sprite;
 
     void Awake()
@@ -15,7 +15,7 @@ public class AtackBehaviour : MonoBehaviour
         _rigidBody = GetComponent<Rigidbody2D>();
     }
 
-    public void Init(GameObject enemy, SOAtack SOAtack, int damage)
+    public void Init(GameObject enemy, SOAtack SOAtack, int damage, bool isExplode)
     {
         _enemy = enemy;
         _speed = SOAtack.Speed;
@@ -24,20 +24,22 @@ public class AtackBehaviour : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = _sprite;
         Animator animator = GetComponent<Animator>();
         if (animator != null && SOAtack.Animation != null) animator.runtimeAnimatorController = SOAtack.Animation;
-        if (damage == 0)
+        if (isExplode)
         {
             animator.Play("ExplosionLata");
             Destroy(gameObject,0.6f);
         }
     }
 
-
-
     void FixedUpdate()
     {
         if (_enemy == null)
         {
-            Destroy(gameObject,0.6f);
+            if (!_destroying)
+            {
+                Destroy(gameObject,0.6f);
+            }
+            _destroying = true;
             return;
         }
         Vector2 direction = (_enemy.transform.position - transform.position).normalized;

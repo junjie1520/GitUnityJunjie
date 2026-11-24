@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -17,8 +18,8 @@ public class TurretPlacementManager : MonoBehaviour
     [SerializeField] private SOConstruction[] _firstLevels;
     [SerializeField] private Button _upgradeButton;
     [SerializeField] private Text _levelLabel;
-    [SerializeField] private GameManagerJunJie _moneyManager;
-
+    [SerializeField] private GameManager _gameManager;
+    public event Action<int, int> OnMinePlaceOrUpgrade;
     private List<ConstructionBehaviour> _constructions = new List<ConstructionBehaviour>();
     private Vector3Int _selectedCell;
     private ConstructionBehaviour _selectedConstruction;
@@ -94,7 +95,7 @@ public class TurretPlacementManager : MonoBehaviour
         }
         else
         {
-            _upgradeButton.interactable = _selectedConstruction.Level == 3 ? false : true;
+            _upgradeButton.interactable = _selectedConstruction.Level < 3;
             _levelLabel.text = "L." + _selectedConstruction.Level;
             ShowMenu(_editMenu);
         }
@@ -102,17 +103,22 @@ public class TurretPlacementManager : MonoBehaviour
 
     public void Place(int type)
     {
-        if (_moneyManager.BuyTurret(_firstLevels[type].Value))
+        if (_gameManager.TryBuyTurret(_firstLevels[type].Value))
         {
             Vector3 position = _tilemap.GetCellCenterWorld(_selectedCell);
             GameObject newConstruction = Instantiate(_constructionPrefab, position, Quaternion.identity);
             ConstructionBehaviour construction = newConstruction.GetComponent<ConstructionBehaviour>();
             construction.Init(_firstLevels[type]);
             _constructions.Add(construction);
+            if (construction.Construction.Type == SOConstruction.ConstructionType.Mine)
+            {
+                OnMinePlaceOrUpgrade?.Invoke(0,construction.Level);
+            }
             CloseMenus();
         }
         else
         {
+            Debug.Log("Dinero insuficiente");
             CloseMenus();
             // Mostrar TOAST
         }
@@ -125,11 +131,16 @@ public class TurretPlacementManager : MonoBehaviour
         {
             return;
         }
-        if (_moneyManager.BuyTurret(_selectedConstruction.Construction.Value+(_selectedConstruction.Level*10)))
+        if (_gameManager.TryBuyTurret(_selectedConstruction.Construction.Value+(_selectedConstruction.Level*10)))
         {
+            int lastLevel = _selectedConstruction.Level;
             _selectedConstruction.Level++;
-            _upgradeButton.interactable = _selectedConstruction.Level == 3 ? false : true;
+            _upgradeButton.interactable = _selectedConstruction.Level < 3;
             _levelLabel.text = "L." + _selectedConstruction.Level;
+            if (_selectedConstruction.Construction.Type == SOConstruction.ConstructionType.Mine)
+            {
+                OnMinePlaceOrUpgrade?.Invoke(lastLevel,_selectedConstruction.Level);
+            }
             CloseMenus();
         }
         else
@@ -137,9 +148,6 @@ public class TurretPlacementManager : MonoBehaviour
             CloseMenus();
             // Mostrar TOAST
         }
-        
-
-        
     }
 
     public void Remove()
@@ -150,6 +158,10 @@ public class TurretPlacementManager : MonoBehaviour
         }
 
         _constructions.Remove(_selectedConstruction);
+        if (_selectedConstruction.Construction.Type == SOConstruction.ConstructionType.Mine)
+        {
+            OnMinePlaceOrUpgrade?.Invoke(_selectedConstruction.Level, 0);
+        }
         Destroy(_selectedConstruction.gameObject);
         CloseMenus();
     }

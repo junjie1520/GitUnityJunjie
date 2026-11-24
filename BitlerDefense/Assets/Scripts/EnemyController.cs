@@ -1,5 +1,4 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -7,36 +6,34 @@ public class EnemyController : MonoBehaviour
     [SerializeField] // Luego quitar esto, es para pruebas
     private SOEnemigos _enemy;
     public SOEnemigos Enemy => _enemy;
-    [SerializeField]
+    [SerializeField] // Luego quitar esto, es para pruebas
     private int _hp;
     private string _direction;
     private string _nextDirection = "";
     private Vector2 _nodeCenter;
-    private int _id;
-    private float _timer;
     public string Direction => _direction;
     private Rigidbody2D _rigidbody;
-    public event Action<Vector3> OnMuerte;
-
+    private Collider2D _collider;
+    private SpriteRenderer _spriteRenderer;
     private Animator _animator;
+    public event Action<EnemyController> OnDeath;
+    private bool _dead;
 
     void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _collider = GetComponent<Collider2D>();
     }
 
-
-    public void Inicializar(SOEnemigos SO, int id)
+    public void Inicializar(SOEnemigos SO)
     {
-
-        _id = id;
         _enemy = SO;
         _hp = _enemy.HP;
  
         ChangeDirection(_enemy.Direction, transform.position);
 
-        _animator = GetComponent<Animator>();
         _animator.runtimeAnimatorController = _enemy.AnimatorController;
 
         _animator.Play("FullHP");
@@ -55,24 +52,12 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        /*
-
-        Timer desactivado porque estaba haciendo pruebas en la escena de la nuria
-
-        _timer+= Time.deltaTime;
-        if (_timer >= 1)
-        {
-            Damaged(1);
-            _timer -= 1;
-        }
-        */
-    }
-
     private void Death()
     {
-        Destroy(gameObject,0.667f);
+        _rigidbody.linearVelocity = Vector2.zero;
+        _nextDirection = "";
+        _collider.enabled = false;
+        Destroy(gameObject, 0.667f);
     }
 
     public void SetNextDirection(string direction, Vector3 nodeCenter)
@@ -93,37 +78,33 @@ public class EnemyController : MonoBehaviour
             _rigidbody.linearVelocity = new Vector2(0f,-_enemy.Speed);
         }else if (_direction.Equals("LEFT"))
         {
+            _spriteRenderer.flipX = true;
             _rigidbody.linearVelocity = new Vector2(-_enemy.Speed,0f);
         }else if (_direction.Equals("RIGHT"))
         {
+            _spriteRenderer.flipX = false;
             _rigidbody.linearVelocity = new Vector2(_enemy.Speed,0f);
         }
     }
 
     public void Damaged(int damage)
     {
+        if (_dead) return;
         _hp -= damage;
-        // Debug si atacan, para no mirar el SerializeField todo el rato
-        Debug.Log("Me atacan: "+_hp);
         if (_hp <= 0)
         {
-          
+            _dead = true;
+            OnDeath?.Invoke(this);
             _animator.Play("Dead");
             Death();
-          
-
         }
         else if (_hp <= (_enemy.HP / 4f))
         {
             _animator.Play("FaseTerminal");
-           
         }
         else if (_hp <= (_enemy.HP / 2f))
         {
-      
             _animator.Play("Fase2");
-        
         }
-        
     }
 }

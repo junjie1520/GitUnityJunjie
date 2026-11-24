@@ -1,4 +1,3 @@
-using UnityEditor.Animations;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "SOEnemigos", menuName = "Scriptable Objects/SOEnemigos")]
