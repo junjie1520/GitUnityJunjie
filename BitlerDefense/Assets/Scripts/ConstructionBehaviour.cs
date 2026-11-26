@@ -84,17 +84,20 @@ public class ConstructionBehaviour : MonoBehaviour
         _shootCoroutine = null;
     }
 
+
+    
     private void Atack()
     {
         _enemyList.Remove(null);
         if (_enemyList.Count == 0)
         {
-            return;
+            return; 
         }
 
         switch (_contruction.Type)
         {
             case SOConstruction.ConstructionType.Projectil:
+                Spin((_enemyList[0].transform.position - transform.position).normalized);
                 GameObject atack = Instantiate(_AtackPrefab, transform.position, Quaternion.identity);
                 atack.GetComponent<AtackBehaviour>().Init(_enemyList[0], _contruction.soAtack, _damage, false);
                 break;
@@ -131,6 +134,8 @@ public class ConstructionBehaviour : MonoBehaviour
 
         while (enemy != null && _enemyList.Contains(enemy))
         {
+
+            Spin((_enemyList[0].transform.position - transform.position).normalized);
             Vector2 posTurret = transform.position;
             Vector2 posEnemy = enemy.transform.position;
             Vector2 diferencia = posEnemy - posTurret;
@@ -189,5 +194,11 @@ public class ConstructionBehaviour : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    private void Spin(Vector2 direction)
+    {
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.eulerAngles = new Vector3(0f, 0f, angle-85);
     }
 }

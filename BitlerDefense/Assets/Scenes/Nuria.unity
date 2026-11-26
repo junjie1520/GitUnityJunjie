@@ -948,6 +948,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManagerJunJie
   _waveManager: {fileID: 744532859}
   _base: {fileID: 191843935}
+  _tpManager: {fileID: 2129666015}
+  _money: 100
 --- !u!4 &15689689
 Transform:
   m_ObjectHideFlags: 0
